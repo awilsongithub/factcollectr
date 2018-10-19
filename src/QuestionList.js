@@ -16,13 +16,14 @@ const QuestionList = props => {
               <div className="card-body">
                 {/* <h5 className="card-title">{question.question}</h5> */}
                 <p className="card-text">{question.question}</p>
-              
+
 
 
 
                 <Answers
                   correctAnswer={question.correct_answer}
                   incorrectAnswers={question.incorrect_answers}
+                  handleAnswerSubmission={props.handleAnswerSubmission}
                 />
 
               </div>
@@ -39,7 +40,8 @@ const QuestionList = props => {
 }
 
 QuestionList.propTypes = {
-  questions: PropTypes.array.isRequired
+  questions: PropTypes.array.isRequired,
+  handleAnswerSubmission: PropTypes.func.isRequired
 }
 
 export default QuestionList;
