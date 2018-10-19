@@ -1,0 +1,8 @@
+button {
+  margin-right: 5px;
+}
+
+/* because of fixed navbar */
+body {
+  padding-top: 100px;
+}
