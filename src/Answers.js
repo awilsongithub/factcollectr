@@ -6,7 +6,7 @@ const Answers = props => {
   // console.log('incorrect_answers: ', props.incorrectAnswers)
   const numIncorrect = props.incorrectAnswers.length;
   const randomInsertionPoint = Math.floor(Math.random() * numIncorrect);
-  console.log('rrandomInsertionPoint', randomInsertionPoint)
+  console.log('randomInsertionPoint', randomInsertionPoint)
   // console.log(randomInsertionPoint);
   const allAnswers = props.incorrectAnswers.map(a => a); // then we'll add the correct answer...
   allAnswers.splice(randomInsertionPoint, 0, props.correctAnswer)

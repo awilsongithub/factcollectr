@@ -5,7 +5,9 @@ import Answers from './Answers';
 const QuestionList = props => {
   var output;
 
-  if(props.questions.length === 0){
+  if(props.questions.length === 0 && props.loading === false) {
+    output = null;
+  } else if(props.questions.length === 0 && props.loading === true){
     output = (<div><h4>Loading...</h4></div>)
   } else {
     output = (

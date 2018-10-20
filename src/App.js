@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import QuestionList from './QuestionList';
-import CurrentScore from './CurrentScore';
-
+import StartScreen from './StartScreen';
+import QuizScreen from './QuizScreen';
 
 class App extends Component {
 
@@ -10,18 +9,23 @@ class App extends Component {
     super();
     this.state = {
       questions: [],
-      loading: true,
+      loading: false,
+      showStart: true,
+      showQuiz: false,
+      showScores: false,
       currentScore: {
         correct: 0,
         incorrect: 0,
         unanswered: 10
-      },
-      timer: {
-        minutes: '00',
-        seconds: '00'
       }
     }
   }
+
+  categories = [
+    {name: 'Any Category', key: ''},
+    {name: 'General Knowledge', key: '9'},
+    {name: 'Science & Nature', key: '17'}
+  ]
 
   /**===============================================
                   LIFECYCLE METHODS
@@ -30,32 +34,26 @@ class App extends Component {
   // fetch data here, in top level component which
   // should handle data and behavior
   // Keep presentational components de-coupled
-  componentDidMount() {
-    if(this.state.questions.length === 0){
-      this.getQuestions();
-    }
-  }
+  // componentDidMount() {
+  //   if(this.state.questions.length === 0){
+  //     this.getQuestions();
+  //   }
+  // }
 
   /**===============================================
                     OTHER METHODS
   ================================================== */
 
-  incrementTimer = () => {
-    let min = this.state.timer.minutes;
-    let sec = this.state.timer.seconds;
-  	sec++;
-    if(sec >= 60){
-    	sec = 0;
-      min++;
-    }
+  startQuiz = (e) => {
+    e.preventDefault();
+    this.getQuestions();
     this.setState({
-      timer: {
-        minutes: min<=9 ? '0'+min : min,
-        seconds: sec<=9 ? '0'+sec : sec
-      }
-    });
+      loading: true,
+      showStart: false,
+      showQuiz: true
+    })
   }
-  setInterval(incrementTimer, 1000)
+
 
   getQuestions = () => {
     console.log('getQuestions called')
@@ -126,16 +124,22 @@ class App extends Component {
 
         <div className='container'>
 
-          <CurrentScore
-            currentScore={this.state.currentScore}
-            currentCategory='General'
-            currentTime='1:42'
-          />
+          {this.state.showStart &&
+            <StartScreen
+              startQuiz={this.startQuiz}
+              categories={this.categories}
+            />
+          }
 
-          <QuestionList
-            questions={this.state.questions}
-            handleAnswerSubmission={this.handleAnswerSubmission}
-          />
+          {this.state.showQuiz &&
+            <QuizScreen
+              currentScore={this.state.currentScore}
+              currentCategory='General'
+              currentTime='1:42'
+              questions={this.state.questions}
+              handleAnswerSubmission={this.handleAnswerSubmission}
+            />
+          }
 
         </div>
 

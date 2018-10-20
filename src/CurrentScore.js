@@ -7,7 +7,7 @@ const CurrentScore = props => {
   return (
     <div>
 
-      Animals (Easy) 1:42
+      Animals (Easy)
     </div>
   )
 }
