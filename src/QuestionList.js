@@ -14,7 +14,7 @@ const QuestionList = props => {
     output = (<div><h4>Loading...</h4></div>)
   } else {
     output = (
-      <div className='row'>
+      <div className='row card-deck'>
         {props.questions.map( (question, index) =>
 
           <Question
@@ -29,7 +29,7 @@ const QuestionList = props => {
       </div>
     )
   }
-  
+
   // return our output
   return (<div>{output}</div>)
 }

@@ -24,8 +24,8 @@ class App extends Component {
   }
 
   categories = [
-    {name: 'Any Category', key: ''},
-    {name: 'General Knowledge', key: '9'},
+    {name: 'Random', key: ''},
+    {name: 'Animals', key: '27'},
     {name: 'Science & Nature', key: '17'}
   ]
 
@@ -46,9 +46,15 @@ class App extends Component {
                     OTHER METHODS
   ================================================== */
 
-  startQuiz = (e) => {
-    e.preventDefault();
-    this.getQuestions();
+  handleCategorySelection = (categoryObj) => {
+    console.log('handling cat string', categoryObj)
+    this.startQuiz(categoryObj)
+  }
+
+  startQuiz = (categoryObj) => {
+    // e.preventDefault();
+    // console.log('startQuiz e', e.target)
+    this.getQuestions(categoryObj);
     this.setState({
       loading: true,
       showStart: false,
@@ -57,9 +63,10 @@ class App extends Component {
   }
 
 
-  getQuestions = () => {
-    console.log('getQuestions called')
-    fetch('https://opentdb.com/api.php?amount=10')
+  getQuestions = (categoryObj) => {
+    console.log('getQuestions called with cat ', categoryObj)
+    const apiUrl = `https://opentdb.com/api.php?amount=10&category=${categoryObj.key}`;
+    fetch(apiUrl)
       .then(response => response.json())
       .then(response => response.results)
       .then(results => {
@@ -142,12 +149,13 @@ class App extends Component {
           </div>
         </nav>
 
-        <div className='container'>
+        <div className='container main-content'>
 
           {this.state.showStart &&
             <StartScreen
               startQuiz={this.startQuiz}
               categories={this.categories}
+              handleCategorySelection={this.handleCategorySelection}
             />
           }
 

@@ -25,46 +25,47 @@ class StartScreen extends React.Component {
   // if data, render questionlist
   // if data/other toggle > hide StartScreen
   //
+  //
+
+
+  /**
+   * GRID OF BUTTONS
+   * MOBILE GOES TO SINGLE COL
+   * CLICK INITS SEARCH ON THAT CATEGORY
+   *
+   *
+   */
+
+
   render() {
     return (
+
       <div>
-        <form>
+        <h2>Choose Category to Start Quiz</h2>
+        <div class="card-deck">
 
-          <div className="form-group">
-            <label htmlFor="categorySelect">Category</label>
-            <select className="form-control" id="categorySelect">
-              <option>animals</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>animals</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
+          {this.props.categories.map( (cat, i) =>
+            <div
+              className="card card-btn"
+              onClick={(e) => this.props.handleCategorySelection(cat, e)}>
+              <div className="card-body">
+                <h5 className="card-title">{cat.name}</h5>
+                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          )}
 
-          <div className="form-group">
-            <label htmlFor="difficultySelect">Difficulty</label>
-            <select className="form-control" id="difficultySelect">
-              <option>Medium</option>
-              <option>Gonna need help from Google</option>
-              <option>Definitely gonna need help!</option>
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            className="btn btn-primary mb-2"
-            onClick={this.props.startQuiz}
-          >
-            Start Quiz
-          </button>
-
-        </form>
+        </div> {/* end deck */}
       </div>
+
+
+
+
+
+
+
+
+
     )
   }
 
@@ -72,7 +73,48 @@ class StartScreen extends React.Component {
 
 StartScreen.propTypes = {
   startQuiz: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired,
+  handleCategorySelection: PropTypes.func.isRequired
 }
 
 export default StartScreen;
+
+/* <div>
+
+  <form>
+
+    <div className="form-group">
+      <label htmlFor="categorySelect">Category</label>
+      <select className="form-control" id="categorySelect">
+        <option>animals</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>animals</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="difficultySelect">Difficulty</label>
+      <select className="form-control" id="difficultySelect">
+        <option>Medium</option>
+        <option>Gonna need help from Google</option>
+        <option>Definitely gonna need help!</option>
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      className="btn btn-primary mb-2"
+      onClick={this.props.startQuiz}
+    >
+      Start Quiz
+    </button>
+
+  </form>
+</div> */
