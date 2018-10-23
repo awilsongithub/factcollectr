@@ -7,6 +7,7 @@ class App extends Component {
 
   constructor() {
     super();
+    this.handleAnswerSubmission = this.handleAnswerSubmission.bind(this);
     this.state = {
       questions: [],
       loading: false,
@@ -18,6 +19,7 @@ class App extends Component {
         incorrect: 0,
         unanswered: 10
       }
+
     }
   }
 
@@ -59,15 +61,49 @@ class App extends Component {
     console.log('getQuestions called')
     fetch('https://opentdb.com/api.php?amount=10')
       .then(response => response.json())
+      .then(response => response.results)
+      // .then(response => response.results)
+
       // .then(json => console.log(json))
-      .then(json => {
-        console.log('json received', json);
+      .then(results => {
+        console.log('json received', results);
         this.setState({
-          questions: json.results,
+          questions: results,
           loading: false
         });
-      })
+      });
   }
+
+  /**
+   // REMOVE ENCODING FROM STRINGS IN API RESPONSE
+   // iterate array and for each obj in it
+   // go thru objects props. if prop is string run replace on it.
+   // if prop is an array, run replace on each of its elements
+   */
+  removeCharacterEncodingFromResults = (results) => {
+    // iterate array
+    const res = results.map( (obj, index) => {
+      // iterate each object in it
+      for (var prop in obj){
+        if (typeof obj[prop] === 'string'){
+          obj[prop] = obj[prop].replace(/&quot;/g, '"');
+          // return obj[prop];
+        }
+        if (Array.isArray(obj[prop])){
+          var originalArray = obj[prop];
+          // iterate subarrays
+          const newArr = originalArray.map( (str, index) => {
+            return str.replace(/&quot;/g, '"');
+            // result[prop][index] = temp;
+          });
+          obj[prop] = newArr;
+        }
+      }
+
+    });
+    return res;
+  }
+
 
   handleAnswerSubmission = (index, randomInsertionPoint, e) => {
     e.preventDefault();

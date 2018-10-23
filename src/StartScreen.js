@@ -31,7 +31,7 @@ class StartScreen extends React.Component {
         <form>
 
           <div className="form-group">
-            <label for="categorySelect">Category</label>
+            <label htmlFor="categorySelect">Category</label>
             <select className="form-control" id="categorySelect">
               <option>animals</option>
               <option>2</option>
@@ -47,7 +47,7 @@ class StartScreen extends React.Component {
           </div>
 
           <div className="form-group">
-            <label for="difficultySelect">Difficulty</label>
+            <label htmlFor="difficultySelect">Difficulty</label>
             <select className="form-control" id="difficultySelect">
               <option>Medium</option>
               <option>Gonna need help from Google</option>

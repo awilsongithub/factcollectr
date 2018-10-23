@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Answers from './Answers';
+import Question from './Question';
+
 
 const QuestionList = props => {
   var output;
 
+  // decide what is our output?
   if(props.questions.length === 0 && props.loading === false) {
     output = null;
   } else if(props.questions.length === 0 && props.loading === true){
@@ -13,31 +16,21 @@ const QuestionList = props => {
     output = (
       <div className='row'>
         {props.questions.map( (question, index) =>
-          <div className='col-sm-4'>
-            <div className="card">
-              <div className="card-body">
-                {/* <h5 className="card-title">{question.question}</h5> */}
-                <p className="card-text">{question.question}</p>
+
+          <Question
+            question={question.question}
+            correctAnswer={question.correct_answer}
+            incorrectAnswers={question.incorrect_answers}
+            handleAnswerSubmission={props.handleAnswerSubmission}
+          />
 
 
-
-
-                <Answers
-                  correctAnswer={question.correct_answer}
-                  incorrectAnswers={question.incorrect_answers}
-                  handleAnswerSubmission={props.handleAnswerSubmission}
-                />
-
-              </div>
-            </div>
-          </div>
         )}
       </div>
     )
   }
-
-
-
+  
+  // return our output
   return (<div>{output}</div>)
 }
 
