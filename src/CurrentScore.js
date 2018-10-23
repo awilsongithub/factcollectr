@@ -7,7 +7,10 @@ const CurrentScore = props => {
   return (
     <div>
 
-      Animals (Easy)
+      <span>Correct: {props.currentScore.correct} </span>
+      <span>Incorrect: {props.currentScore.incorrect} </span>
+      <span>Unanswered: {props.currentScore.unanswered} </span>
+
     </div>
   )
 }

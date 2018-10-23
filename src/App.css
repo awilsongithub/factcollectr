@@ -23,3 +23,9 @@ body {
   background-color: #e9ecef;
   color: inherit;
 }
+.btn-correct-answer {
+  background: #93f291;
+}
+.btn-wrong-answer {
+  background: #edaf9b;
+}

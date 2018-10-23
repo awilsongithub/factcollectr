@@ -62,9 +62,6 @@ class App extends Component {
     fetch('https://opentdb.com/api.php?amount=10')
       .then(response => response.json())
       .then(response => response.results)
-      // .then(response => response.results)
-
-      // .then(json => console.log(json))
       .then(results => {
         console.log('json received', results);
         this.setState({
@@ -74,42 +71,27 @@ class App extends Component {
       });
   }
 
-  /**
-   // REMOVE ENCODING FROM STRINGS IN API RESPONSE
-   // iterate array and for each obj in it
-   // go thru objects props. if prop is string run replace on it.
-   // if prop is an array, run replace on each of its elements
-   */
-  removeCharacterEncodingFromResults = (results) => {
-    // iterate array
-    const res = results.map( (obj, index) => {
-      // iterate each object in it
-      for (var prop in obj){
-        if (typeof obj[prop] === 'string'){
-          obj[prop] = obj[prop].replace(/&quot;/g, '"');
-          // return obj[prop];
-        }
-        if (Array.isArray(obj[prop])){
-          var originalArray = obj[prop];
-          // iterate subarrays
-          const newArr = originalArray.map( (str, index) => {
-            return str.replace(/&quot;/g, '"');
-            // result[prop][index] = temp;
-          });
-          obj[prop] = newArr;
-        }
-      }
+  // TODO function to turn btn green/render
+  // caled from handleAnswerSubmission
+  // on that particular question
+  // at the randomInsertionPoint
+  // set a class
+  //
+  //
+  //
+  //
+  //
 
-    });
-    return res;
-  }
 
 
   handleAnswerSubmission = (index, randomInsertionPoint, e) => {
     e.preventDefault();
-    console.log('correct at', randomInsertionPoint)
-    console.log('guess at', index )// accurate
-    console.log(e)
+    console.log(e);
+
+
+    // console.log('correct at', randomInsertionPoint)
+    // console.log('guess at', index )
+    // console.log(e)
 
     // correct if 2 params match
     //  * if guess is correct, tell app.js. call inherited method.
@@ -117,6 +99,7 @@ class App extends Component {
      // * display corect, incorrect, unaswered at top in component
      // * component = CurrentScore
      if(randomInsertionPoint === index){
+       e.target.classList.add('btn-correct-answer');
        this.setState({
          currentScore: {
            ...this.state.currentScore,
@@ -125,10 +108,11 @@ class App extends Component {
          }
        })
      } else {
+       e.target.classList.add('btn-wrong-answer');
        this.setState({
          currentScore: {
            ...this.state.currentScore,
-           correct:this.state.currentScore.incorrect+1,
+           incorrect:this.state.currentScore.incorrect+1,
            unanswered: this.state.currentScore.unanswered-1
          }
        })
