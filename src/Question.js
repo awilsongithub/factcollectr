@@ -6,16 +6,16 @@ const Question = props => {
 
   const question = props.question
     .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, '"');
+    .replace(/&#039;/g, "'");
 
   const correct = props.correctAnswer
     .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, '"');
+    .replace(/&#039;/g, "'");
 
   const incorrect = props.incorrectAnswers.map(function(answer){
     return answer
       .replace(/&quot;/g, '"')
-      .replace(/&#039;/g, '"');
+      .replace(/&#039;/g, "'");
   })
 
   return (

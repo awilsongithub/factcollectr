@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Answers from './Answers';
 import Question from './Question';
 
 
@@ -18,6 +17,7 @@ const QuestionList = props => {
         {props.questions.map( (question, index) =>
 
           <Question
+            key={index}
             question={question.question}
             correctAnswer={question.correct_answer}
             incorrectAnswers={question.incorrect_answers}

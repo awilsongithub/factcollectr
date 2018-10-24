@@ -11,9 +11,10 @@ class Answers extends React.Component {
   }
 
   // this prevents recalculation of shuffledAnswers which
-  // causes buttons to shuffle when click on one initiates a state change 
+  // causes buttons to shuffle when click on one initiates a state change
   shouldComponentUpdate(nextProps){
     const differentAnswers = this.props.correctAnswer !== nextProps.correctAnswer;
+    return differentAnswers;
   }
 
  render(){
@@ -21,11 +22,12 @@ class Answers extends React.Component {
      <div>
        {this.shuffledAnswers.map( (answer, index) =>
          <button
+           key={index}
            type="button"
            className="btn btn-outline-secondary"
            onClick={ (e) => this.props.handleAnswerSubmission(index, this.randomInsertionPoint, e)}
          >
-         {answer}
+        {answer}
        </button>
        )}
      </div>

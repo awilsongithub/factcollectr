@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SimpleStorage from 'react-simple-storage';
+import $ from 'jquery';
 import './App.css';
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
@@ -26,7 +28,10 @@ class App extends Component {
   categories = [
     {name: 'Random', key: ''},
     {name: 'Animals', key: '27'},
-    {name: 'Science & Nature', key: '17'}
+    {name: 'Science & Nature', key: '17'},
+    {name: 'Geography', key: '22'},
+    {name: 'Television', key: '14'},
+    {name: 'Movies', key: '11'}
   ]
 
   /**===============================================
@@ -65,7 +70,7 @@ class App extends Component {
 
   getQuestions = (categoryObj) => {
     console.log('getQuestions called with cat ', categoryObj)
-    const apiUrl = `https://opentdb.com/api.php?amount=10&category=${categoryObj.key}`;
+    const apiUrl = `https://opentdb.com/api.php?amount=10&category=${categoryObj.key}&difficulty=easy`;
     fetch(apiUrl)
       .then(response => response.json())
       .then(response => response.results)
@@ -89,24 +94,23 @@ class App extends Component {
   //
   //
 
+  provideSubmissionFeedback = (element, guess) => {
+    $(element).addClass('disabled');
+    $(element).siblings().addClass('disabled');
+    if(guess === 'correct'){
+      $(element).addClass('btn-correct-answer');
+    } else {
+      $(element).addClass('btn-wrong-answer');
+    }
+  }
 
 
   handleAnswerSubmission = (index, randomInsertionPoint, e) => {
     e.preventDefault();
     console.log(e);
 
-
-    // console.log('correct at', randomInsertionPoint)
-    // console.log('guess at', index )
-    // console.log(e)
-
-    // correct if 2 params match
-    //  * if guess is correct, tell app.js. call inherited method.
-     // * updateCurrentScore(correct) > correct++ .
-     // * display corect, incorrect, unaswered at top in component
-     // * component = CurrentScore
      if(randomInsertionPoint === index){
-       e.target.classList.add('btn-correct-answer');
+       this.provideSubmissionFeedback(e.target, 'correct');
        this.setState({
          currentScore: {
            ...this.state.currentScore,
@@ -115,7 +119,8 @@ class App extends Component {
          }
        })
      } else {
-       e.target.classList.add('btn-wrong-answer');
+       e.target.classList.add('btn-wrong-answer', 'disabled');
+       this.provideSubmissionFeedback(e.target, 'incorrect');
        this.setState({
          currentScore: {
            ...this.state.currentScore,
@@ -134,6 +139,10 @@ class App extends Component {
 
     return (
       <div className="App">
+
+        {/* adds local storage via plugin. See:
+        https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2 */}
+        <SimpleStorage parent={this} />
 
         {/* TODO REFACTOR OTU NAVBAR COMPONENT  */}
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">

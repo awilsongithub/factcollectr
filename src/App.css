@@ -31,10 +31,10 @@ body {
   background-color: #e9ecef;
   color: inherit;
 }
-.btn-correct-answer {
+.btn.btn-correct-answer, .btn.btn-correct-answer:hover {
   background: #93f291;
 }
-.btn-wrong-answer {
+.btn.btn-wrong-answer, .btn.btn-wrong-answer:hover {
   background: #edaf9b;
 }
 .main-content {
