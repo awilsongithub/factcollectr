@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 
 class StartScreen extends React.Component {
 
@@ -33,7 +35,9 @@ class StartScreen extends React.Component {
    * MOBILE GOES TO SINGLE COL
    * CLICK INITS SEARCH ON THAT CATEGORY
    *
-   *
+   * start GAME WITH ROUTE PARAMS
+   * card is a link to url
+   * /:category in url is used for fetch
    */
 
 
@@ -45,16 +49,18 @@ class StartScreen extends React.Component {
         <div className="card-deck">
 
           {this.props.categories.map( (cat, i) =>
-            <div
-              key={i}
-              className="card card-btn"
-              onClick={(e) => this.props.handleCategorySelection(cat, e)}
-            >
-              <div className="card-body">
-                <h5 className="card-title">{cat.name}</h5>
-                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+            <Link to='/play'>
+              <div
+                key={i}
+                className="card card-btn"
+                onClick={(e) => this.props.handleCategorySelection(cat, e)}
+              >
+                <div className="card-body">
+                  <h5 className="card-title">{cat.name}</h5>
+                  <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                </div>
               </div>
-            </div>
+            </Link>
           )}
 
         </div> {/* end deck */}

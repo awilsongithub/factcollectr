@@ -1,9 +1,17 @@
+// react stuff
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import SimpleStorage from 'react-simple-storage';
+// other
 import $ from 'jquery';
 import './App.css';
+// App components
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
+import Header from './Header';
+
+
+
 
 class App extends Component {
 
@@ -53,7 +61,11 @@ class App extends Component {
 
   handleCategorySelection = (categoryObj) => {
     console.log('handling cat string', categoryObj)
-    this.startQuiz(categoryObj)
+    this.startQuiz(categoryObj);
+
+    // setState of showQuiz: true
+    // in render of app, if(this.state.showQuiz === true){
+    // return <Redirect to='/game' /> }
   }
 
   startQuiz = (categoryObj) => {
@@ -65,6 +77,7 @@ class App extends Component {
       showStart: false,
       showQuiz: true
     })
+    // this.props.history.push('/game');
   }
 
 
@@ -131,56 +144,45 @@ class App extends Component {
      }
 
      console.log('current score', this.state.currentScore)
-
-
   }
+
+  /**
+   * IMPLEMENTING REACT ROUTER
+   * npm install, import router components
+   * browserRouter,
+   * new Header always (with nav)
+   * / (home) StartScreen, rename home?
+   * /play > QuizScreen rename play?
+   * /scores new
+   */
 
   render() {
 
     return (
-      <div className="App">
 
-        {/* adds local storage via plugin. See:
-        https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2 */}
-        <SimpleStorage parent={this} />
-
-        {/* TODO REFACTOR OTU NAVBAR COMPONENT  */}
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="index.js">FactCollectr</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <a className="nav-item nav-link active" href="index.js">Home<span className="sr-only">(current)</span></a>
-              <a className="nav-item nav-link" href="index.js">Scores</a>
-            </div>
-          </div>
-        </nav>
-
-        <div className='container main-content'>
-
-          {this.state.showStart &&
-            <StartScreen
-              startQuiz={this.startQuiz}
-              categories={this.categories}
-              handleCategorySelection={this.handleCategorySelection}
+      <BrowserRouter>
+        <div className="App">
+          <Route component={Header} />
+          <Switch>
+            <Route exact path="/" render={() => <StartScreen
+                startQuiz={this.startQuiz}
+                categories={this.categories}
+                handleCategorySelection={this.handleCategorySelection}
+              />}
             />
-          }
-
-          {this.state.showQuiz &&
-            <QuizScreen
-              currentScore={this.state.currentScore}
-              currentCategory='General'
-              currentTime='1:42'
-              questions={this.state.questions}
-              handleAnswerSubmission={this.handleAnswerSubmission}
+            <Route path="/play" render={() =>   <QuizScreen
+                currentScore={this.state.currentScore}
+                currentCategory='General'
+                currentTime='1:42'
+                questions={this.state.questions}
+                handleAnswerSubmission={this.handleAnswerSubmission}
+              />}
             />
-          }
+          </Switch>
 
         </div>
+      </BrowserRouter>
 
-      </div>
     );
   }
 }
