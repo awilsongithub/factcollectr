@@ -1,7 +1,7 @@
 // react and extensions
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter } from 'react-router-dom';
+// import { Route, BrowserRouter } from 'react-router-dom';
 // other libraries
 import 'bootstrap/dist/css/bootstrap.min.css';
 // eslint-disable-next-line

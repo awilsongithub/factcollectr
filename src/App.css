@@ -1,6 +1,17 @@
 button {
   margin-right: 5px;
+
+  /* depress 3d effect */
+  box-shadow: 0 4px #999;
 }
+  /* depress 3d effect */
+button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
+}
+
+
+
 .card button {
   width: 100%;
   margin-bottom: 10px;
@@ -31,12 +42,38 @@ body {
   background-color: #e9ecef;
   color: inherit;
 }
-.btn.btn-correct-answer, .btn.btn-correct-answer:hover {
-  background: #93f291;
-}
-.btn.btn-wrong-answer, .btn.btn-wrong-answer:hover {
+.btn.btn-wrong, .btn.btn-wrong:hover {
   background: #edaf9b;
 }
+.btn.btn-correct, .btn.btn-correct:hover {
+  background: #93f291;
+}
+.btn.btn-correct-animate, .btn.btn-correct-animate:hover {
+  background: #93f291;
+  animation-name: flash;
+  animation-duration: 2.5s;
+  -webkit-animation-name: flash;
+  -webkit-animation-duration: 2.5s;
+}
+@keyframes flash {
+  0% {background-color: inherit; }
+  30% {background-color: inherit; }
+  42% {background-color: #93f291; }
+  56% {background-color: inherit; }
+  68% {background-color: #93f291; }
+  90% {background-color: inherit; }
+  100% {background-color: #93f291; }
+}
+@-webkit-keyframes flash {
+  0% {background-color: inherit; }
+  30% {background-color: inherit; }
+  42% {background-color: #93f291; }
+  56% {background-color: inherit; }
+  68% {background-color: #93f291; }
+  90% {background-color: inherit; }
+  100% {background-color: #93f291; }
+}
+
 .main-content {
   padding-top: 20px;
 }

@@ -5,7 +5,7 @@ class Answers extends React.Component {
 
   constructor(props){
     super();
-    this.randomInsertionPoint =  Math.floor( Math.random()*props.incorrectAnswers.length );
+    this.randomInsertionPoint =  Math.floor( Math.random()*props.incorrectAnswers.length + 1);
     this.shuffledAnswers = props.incorrectAnswers.map(a => a); // then we'll add the correct answer...
     this.shuffledAnswers.splice(this.randomInsertionPoint, 0, props.correctAnswer)
   }

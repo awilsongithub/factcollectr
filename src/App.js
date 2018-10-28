@@ -1,7 +1,8 @@
 // react stuff
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
-import SimpleStorage from 'react-simple-storage';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// TODO add local storage back?
+// import SimpleStorage from 'react-simple-storage';
 // other
 import $ from 'jquery';
 import './App.css';
@@ -107,23 +108,38 @@ class App extends Component {
   //
   //
 
-  provideSubmissionFeedback = (element, guess) => {
-    $(element).addClass('disabled');
-    $(element).siblings().addClass('disabled');
+  provideSubmissionFeedback = (target, guess, indexOfCorrect) => {
+    const userGuessBtn = $(target);
+    const allBtns = userGuessBtn.siblings().addBack();
+    const correctAnswerBtn = allBtns.get(indexOfCorrect);
+    console.log('allBtns', allBtns)
+    console.log('correctAnswerBtn', correctAnswerBtn)
+
+    allBtns.addClass('disabled');
+
     if(guess === 'correct'){
-      $(element).addClass('btn-correct-answer');
+      userGuessBtn.addClass('btn-correct');
     } else {
-      $(element).addClass('btn-wrong-answer');
+      userGuessBtn.addClass('btn-wrong');
+        $(correctAnswerBtn).addClass('btn-correct-animate');
+
+
+
+      // find correct and add class setting interval for flashes
+      // and clear interval after x ms
+      // get all btns and correct is btns[randomInsertionPoint] ?
+      // use refs on btns and tag btn if it is the correct answer in Answers which is where the knowledge of which is correct is held
+      //
+      //
     }
   }
 
 
-  handleAnswerSubmission = (index, randomInsertionPoint, e) => {
+  handleAnswerSubmission = (indexOfGuess, indexOfCorrect, e) => {
     e.preventDefault();
-    console.log(e);
 
-     if(randomInsertionPoint === index){
-       this.provideSubmissionFeedback(e.target, 'correct');
+     if(indexOfCorrect === indexOfGuess){
+       this.provideSubmissionFeedback(e.target, 'correct', indexOfCorrect);
        this.setState({
          currentScore: {
            ...this.state.currentScore,
@@ -133,7 +149,7 @@ class App extends Component {
        })
      } else {
        e.target.classList.add('btn-wrong-answer', 'disabled');
-       this.provideSubmissionFeedback(e.target, 'incorrect');
+       this.provideSubmissionFeedback(e.target, 'incorrect', indexOfCorrect);
        this.setState({
          currentScore: {
            ...this.state.currentScore,
