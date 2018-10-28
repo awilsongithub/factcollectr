@@ -1,16 +1,14 @@
+
+body {
+  /* because of fixed navbar */
+  padding-top: 55px;
+  background-color: #e6e8be;
+  font-family: 'Roboto Slab';
+}
+
 button {
   margin-right: 5px;
-
-  /* depress 3d effect */
-  box-shadow: 0 4px #999;
 }
-  /* depress 3d effect */
-button:active {
-  box-shadow: 0 1px #666;
-  transform: translateY(2px);
-}
-
-
 
 .card button {
   width: 100%;
@@ -51,26 +49,26 @@ body {
 .btn.btn-correct-animate, .btn.btn-correct-animate:hover {
   background: #93f291;
   animation-name: flash;
-  animation-duration: 2.5s;
+  animation-duration: 2s;
   -webkit-animation-name: flash;
-  -webkit-animation-duration: 2.5s;
+  -webkit-animation-duration: 2s;
 }
 @keyframes flash {
   0% {background-color: inherit; }
-  30% {background-color: inherit; }
-  42% {background-color: #93f291; }
-  56% {background-color: inherit; }
-  68% {background-color: #93f291; }
-  90% {background-color: inherit; }
+  16% {background-color: inherit; }
+  32% {background-color: #93f291; }
+  48% {background-color: inherit; }
+  64% {background-color: #93f291; }
+  80% {background-color: inherit; }
   100% {background-color: #93f291; }
 }
 @-webkit-keyframes flash {
   0% {background-color: inherit; }
-  30% {background-color: inherit; }
-  42% {background-color: #93f291; }
-  56% {background-color: inherit; }
-  68% {background-color: #93f291; }
-  90% {background-color: inherit; }
+  16% {background-color: inherit; }
+  32% {background-color: #93f291; }
+  48% {background-color: inherit; }
+  64% {background-color: #93f291; }
+  80% {background-color: inherit; }
   100% {background-color: #93f291; }
 }
 

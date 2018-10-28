@@ -112,28 +112,14 @@ class App extends Component {
     const userGuessBtn = $(target);
     const allBtns = userGuessBtn.siblings().addBack();
     const correctAnswerBtn = allBtns.get(indexOfCorrect);
-    console.log('allBtns', allBtns)
-    console.log('correctAnswerBtn', correctAnswerBtn)
-
     allBtns.addClass('disabled');
-
     if(guess === 'correct'){
       userGuessBtn.addClass('btn-correct');
     } else {
       userGuessBtn.addClass('btn-wrong');
         $(correctAnswerBtn).addClass('btn-correct-animate');
-
-
-
-      // find correct and add class setting interval for flashes
-      // and clear interval after x ms
-      // get all btns and correct is btns[randomInsertionPoint] ?
-      // use refs on btns and tag btn if it is the correct answer in Answers which is where the knowledge of which is correct is held
-      //
-      //
     }
   }
-
 
   handleAnswerSubmission = (indexOfGuess, indexOfCorrect, e) => {
     e.preventDefault();
@@ -177,7 +163,7 @@ class App extends Component {
     return (
 
       <BrowserRouter>
-        <div className="App">
+        <div className="App container">
           <Route component={Header} />
           <Switch>
             <Route exact path="/" render={() => <StartScreen
