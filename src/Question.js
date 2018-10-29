@@ -18,8 +18,11 @@ const Question = props => {
       .replace(/&#039;/g, "'");
   })
 
+  const carouselItemClass = (props.questionIndex === 0 ) ? 'carousel-item active' : 'carousel-item';
+
   return (
-    <div className='col-sm-4'>
+
+    <div className={carouselItemClass}>
       <div className="card">
         <div className="card-body">
           <p className="card-text">{question}</p>
@@ -33,6 +36,28 @@ const Question = props => {
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+    // OLD MULTI CARD LAYOUT
+    // <div className='col-sm-4'>
+    //   <div className="card">
+    //     <div className="card-body">
+    //       <p className="card-text">{question}</p>
+    //
+    //       <Answers
+    //         correctAnswer={correct}
+    //         incorrectAnswers={incorrect}
+    //         handleAnswerSubmission={props.handleAnswerSubmission}
+    //       />
+    //
+    //     </div>
+    //   </div>
+    // </div>
   )
 }
 

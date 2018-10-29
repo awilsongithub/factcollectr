@@ -85,5 +85,33 @@ body {
 .gcse-searchbox {
   border: 2px solid red;
   height: 30px;
-    
+
+}
+
+.carousel-indicators li {
+    cursor: initial;
+    background-color: lightgrey;
+    height: 30px;
+
+    text-indent: 10px;
+      margin: 0 2px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      line-height: 30px;
+      color: #fff;
+        background-color: lightgrey;
+      transition: all 0.25s ease;
+}
+.carousel-indicators li.active,
+.carousel-indicators li.hover {
+    background-color: black;
+
+    margin: 0 2px;
+       width: 30px;
+       height: 30px;
+}
+
+.question-number {
+  color: white;
 }

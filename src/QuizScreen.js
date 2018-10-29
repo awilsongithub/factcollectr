@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import QuestionList from './QuestionList';
 import CurrentScore from './CurrentScore';
 import Timer from './Timer';
+import Carousel from './Carousel';
 
 class QuizScreen extends React.Component {
 
@@ -23,10 +24,15 @@ class QuizScreen extends React.Component {
           currentTime='1:42'
         />
 
-        <QuestionList
+        <Carousel
           questions={this.props.questions}
           handleAnswerSubmission={this.props.handleAnswerSubmission}
         />
+
+        {/* <QuestionList
+          questions={this.props.questions}
+          handleAnswerSubmission={this.props.handleAnswerSubmission}
+        /> */}
 
       </div>
     )

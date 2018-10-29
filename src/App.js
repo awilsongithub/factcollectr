@@ -83,7 +83,7 @@ class App extends Component {
 
   getQuestions = (categoryObj) => {
     console.log('getQuestions called with cat ', categoryObj)
-    const apiUrl = `https://opentdb.com/api.php?amount=10&category=${categoryObj.key}&difficulty=easy`;
+    const apiUrl = `https://opentdb.com/api.php?amount=20&category=${categoryObj.key}&difficulty=easy`;
     fetch(apiUrl)
       .then(response => response.json())
       .then(response => response.results)
