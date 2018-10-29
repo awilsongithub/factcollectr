@@ -28,8 +28,14 @@ body {
 .card:hover {
   /* box-shadow: 1px 3px 2px #777; */
 }
-.card-deck card {
+.card-deck .col {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.card-deck .card {
+  margin-right: 5px;
   margin-bottom: 15px;
+  margin-left: 5px;
 }
 .card-btn {
   min-height: 100px;
@@ -74,4 +80,10 @@ body {
 
 .main-content {
   padding-top: 20px;
+}
+
+.gcse-searchbox {
+  border: 2px solid red;
+  height: 30px;
+    
 }

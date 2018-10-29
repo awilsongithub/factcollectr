@@ -10,9 +10,8 @@ import './App.css';
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
 import Header from './Header';
-
-
-
+// TODO NOT WORKING!
+// import GoogleCustomSearch from './GoogleCustomSearch';
 
 class App extends Component {
 
@@ -51,10 +50,10 @@ class App extends Component {
   // should handle data and behavior
   // Keep presentational components de-coupled
   // componentDidMount() {
-  //   if(this.state.questions.length === 0){
-  //     this.getQuestions();
-  //   }
+  //   const script = document.createElement('script');
+  //
   // }
+
 
   /**===============================================
                     OTHER METHODS
@@ -165,6 +164,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App container">
           <Route component={Header} />
+
           <Switch>
             <Route exact path="/" render={() => <StartScreen
                 startQuiz={this.startQuiz}
