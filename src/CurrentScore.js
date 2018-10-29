@@ -7,9 +7,12 @@ const CurrentScore = props => {
   return (
     <div>
 
-      <span>Correct: {props.currentScore.correct} </span>
-      <span>Incorrect: {props.currentScore.incorrect} </span>
-      <span>Unanswered: {props.currentScore.unanswered} </span>
+      <span className='float-right'>
+        <span>Points: </span>
+        {props.currentScore.correct}
+      </span>
+      {/* <span>Incorrect: {props.currentScore.incorrect} </span>
+      <span>Unanswered: {props.currentScore.unanswered} </span> */}
 
     </div>
   )

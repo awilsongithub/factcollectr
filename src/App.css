@@ -115,3 +115,11 @@ body {
 .question-number {
   color: white;
 }
+.stats {
+  display: flex;
+  justify-content: center;
+    padding: 10px 20px;
+}
+.stats > div {
+  width: 33%;
+}

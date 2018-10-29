@@ -40,8 +40,11 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.timer.minutes + ':' + this.state.timer.seconds}
+      <div className='d-flex justify-content-center'>
+        <span>
+          <span>Time: </span>
+          {this.state.timer.minutes + ':' + this.state.timer.seconds}
+        </span>
       </div>
     )
   }

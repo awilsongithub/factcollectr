@@ -5,6 +5,7 @@ import Question from './Question';
 
 const Carousel = props => {
 
+  const dataRide = false;
   var output;
 
   // decide what is our output?
@@ -15,31 +16,20 @@ const Carousel = props => {
   } else {
     output = (
 
-    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-      <span>Question</span>
+    <div id="carouselExampleIndicators" className="carousel slide" data-ride={dataRide} data-interval={dataRide}>
+
       <ol className="carousel-indicators">
-
-
         {props.questions.map( (question, index) =>
-            <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? 'active' : ''}>
-              <span>{index + 1}</span>
-              {/* <span className='question-number'>{index}</span> */}
-
+            <li
+              data-target="#carouselExampleIndicators"
+              data-slide-to={index}
+              className={index === 0 ? 'active' : ''}>
+                <span>{index + 1}</span>
             </li>
         )}
-
-
-        {/* <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> */}
-
-
-
       </ol>
+
       <div className="carousel-inner">
-
-
-
         {props.questions.map( (question, index) =>
           <Question
             questionIndex={index}
@@ -50,23 +40,9 @@ const Carousel = props => {
             handleAnswerSubmission={props.handleAnswerSubmission}
           />
         )}
-
-
-
       </div>
 
-      <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true">Previous</span>
-        <span className="sr-only">Previous</span>
-      </a>
-      <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true">Next</span>
-        <span className="sr-only">Next</span>
-      </a>
     </div>
-
-
-
   )
 }
 

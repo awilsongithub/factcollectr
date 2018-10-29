@@ -90,6 +90,7 @@ class App extends Component {
       .then(results => {
         console.log('json received', results);
         this.setState({
+          currentCategory: categoryObj.name,
           questions: results,
           loading: false
         });
@@ -144,7 +145,12 @@ class App extends Component {
        })
      }
 
-     console.log('current score', this.state.currentScore)
+      // move to next carousel/question after delay
+      setTimeout(function(){
+        $('.carousel').carousel('next');
+      }, 3000)
+
+
   }
 
   /**
@@ -174,7 +180,7 @@ class App extends Component {
             />
             <Route path="/play" render={() =>   <QuizScreen
                 currentScore={this.state.currentScore}
-                currentCategory='General'
+                currentCategory={this.state.currentCategory}
                 currentTime='1:42'
                 questions={this.state.questions}
                 handleAnswerSubmission={this.handleAnswerSubmission}
