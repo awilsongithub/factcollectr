@@ -10,6 +10,7 @@ import './App.css';
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
 import Header from './Header';
+import HallOfFame from './HallOfFame';
 // TODO NOT WORKING!
 // import GoogleCustomSearch from './GoogleCustomSearch';
 
@@ -40,6 +41,14 @@ class App extends Component {
     {name: 'Geography', key: '22'},
     {name: 'Television', key: '14'},
     {name: 'Movies', key: '11'}
+  ]
+
+  scores = [
+    {name: 'Biff', score: '99%', time: '1:22', category: 'Animals'},
+    {name: 'Bob', score: '98%', time: '1:55', category: 'Science'},
+    {name: 'DAve', score: '99%', time: '1:22', category: 'Animals'},
+    {name: 'Dood', score: '99%', time: '1:22', category: 'Animals'},
+    {name: 'What', score: '99%', time: '1:22', category: 'Random'}
   ]
 
   /**===============================================
@@ -186,6 +195,14 @@ class App extends Component {
                 handleAnswerSubmission={this.handleAnswerSubmission}
               />}
             />
+
+            {/* route /scores goes to component scores
+              which i could just do ui, then just save to state
+               */}
+            <Route path='/hall' render={() => <HallOfFame
+              scores={this.scores}
+            />} />
+
           </Switch>
 
         </div>
