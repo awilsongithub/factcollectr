@@ -47,13 +47,13 @@ body {
   color: inherit;
 }
 .btn.btn-wrong, .btn.btn-wrong:hover {
-  background: #edaf9b;
+  background: #f80100;
 }
 .btn.btn-correct, .btn.btn-correct:hover {
-  background: #93f291;
+  background: #0EBF00;
 }
 .btn.btn-correct-animate, .btn.btn-correct-animate:hover {
-  background: #93f291;
+  background: #0EBF00;
   animation-name: flash;
   animation-duration: 2s;
   -webkit-animation-name: flash;
@@ -62,20 +62,20 @@ body {
 @keyframes flash {
   0% {background-color: inherit; }
   16% {background-color: inherit; }
-  32% {background-color: #93f291; }
+  32% {background-color: #0EBF00; }
   48% {background-color: inherit; }
-  64% {background-color: #93f291; }
+  64% {background-color: #0EBF00; }
   80% {background-color: inherit; }
-  100% {background-color: #93f291; }
+  100% {background-color: #0EBF00; }
 }
 @-webkit-keyframes flash {
   0% {background-color: inherit; }
   16% {background-color: inherit; }
-  32% {background-color: #93f291; }
+  32% {background-color: #0EBF00; }
   48% {background-color: inherit; }
-  64% {background-color: #93f291; }
+  64% {background-color: #0EBF00; }
   80% {background-color: inherit; }
-  100% {background-color: #93f291; }
+  100% {background-color: #0EBF00; }
 }
 
 .main-content {
