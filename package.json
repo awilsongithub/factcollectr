@@ -13,7 +13,8 @@
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
-    "react-simple-storage": "^1.4.0"
+    "react-simple-storage": "^1.4.0",
+    "reactable": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

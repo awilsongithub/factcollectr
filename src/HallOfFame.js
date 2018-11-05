@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from './firebase';
 // import PropTypes from 'prop-types';
+import Table from './Table';
 
 class HallOfFame extends React.Component {
 
@@ -52,16 +53,11 @@ class HallOfFame extends React.Component {
       <div>
         <h2>Hall of Fame</h2>
 
-        <ul>
-          {this.state.allScores.map((item) => {
-            return (
-              <li key={item.category}>
-                <h3></h3>
-                <p>Category: {item.category} score: {item.percentString}, {item.decimal}</p>
-              </li>
-            )
-          })}
-        </ul>
+        <Table
+          allScores={this.state.allScores}
+        />
+
+
 
 
       </div>
@@ -74,3 +70,15 @@ class HallOfFame extends React.Component {
 // }
 
 export default HallOfFame;
+
+
+// <ul>
+//   {this.state.allScores.map((item) => {
+//     return (
+//       <li key={item.category}>
+//         <h3></h3>
+//         <p>Category: {item.category} score: {item.percentString}, {item.decimal}</p>
+//       </li>
+//     )
+//   })}
+// </ul>
