@@ -1,21 +1,69 @@
 import React from 'react';
+import firebase from './firebase';
 // import PropTypes from 'prop-types';
 
 class HallOfFame extends React.Component {
 
   constructor(props){
     super();
+    this.state = {
+      allScores: []
+    }
   }
 
   componentDidMount() {
-  }
+    const scoresRef = firebase.database().ref('scores');
 
+    // on mount and when update to scorres in db, update state
+    scoresRef.on('value', (snapshot) => {
+      console.log('db scores value change', snapshot.val());
+      let allScores = snapshot.val();
+      let newState = [];
+      for (let s in allScores) {
+        // NOTE: we need to push on one prop at a time like this
+        newState.push({
+          id: s,
+          category: allScores[s].category,
+          date: allScores[s].date,
+          decimal: allScores[s].decimal,
+          percentString: allScores[s].percentString,
+          time: allScores[s].time,
+          user: allScores[s].user
+        })
+      }
+      this.setState({
+        allScores: newState
+      });
+
+    });
+  }
+  // PROPS TO RENDER ===========================
+  // id: s,
+  // category: allScores[s].category,
+  // date: allScores[s].date,
+  // decimal: allScores[s].decimal,
+  // percentString: allScores[s].percentString,
+  // time: allScores[s].time,
+  // user: allScores[s].user
+  //==============================================
 
   render() {
     return (
       <div>
         <h2>Hall of Fame</h2>
-        <p>TODO: add a table here of scores. name, score, time, category, sortable by column using https://react-table.js.org/#/story/simple-table perhaps. react bootstrap tables not sortable. or paginated. click a player to se their info at hall/playerId. shows name (only user created visible data item), Fact Collection (preview with ellipsis of question with details link that shows in collapse maybe, the full q and answers with correct anwer in green. also shows table of their scores.)</p>
+
+        <ul>
+          {this.state.allScores.map((item) => {
+            return (
+              <li key={item.category}>
+                <h3></h3>
+                <p>Category: {item.category} score: {item.percentString}, {item.decimal}</p>
+              </li>
+            )
+          })}
+        </ul>
+
+
       </div>
     )
   }

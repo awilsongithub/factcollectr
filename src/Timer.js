@@ -33,7 +33,7 @@ class Timer extends React.Component {
     this.setState({
       timer: {
         minutes: min,
-        seconds: sec<=9 ? '0'+sec : sec
+        seconds: sec <= 9 ? '0'+sec : sec
       }
     });
   }

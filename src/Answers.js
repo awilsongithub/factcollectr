@@ -25,7 +25,7 @@ class Answers extends React.Component {
            key={index}
            type="button"
            className="btn btn-outline-secondary"
-           onClick={ (e) => this.props.handleAnswerSubmission(index, this.randomInsertionPoint, e)}
+           onClick={ (e) => this.props.handleAnswerSubmission(index, this.randomInsertionPoint, this.props.questionNumber, e)}
          >
         {answer}
        </button>
@@ -37,6 +37,7 @@ class Answers extends React.Component {
 }
 
 Answers.propTypes = {
+  questionNumber: PropTypes.number.isRequired,
   correctAnswer: PropTypes.string.isRequired,
   incorrectAnswers: PropTypes.array.isRequired,
   handleAnswerSubmission: PropTypes.func.isRequired

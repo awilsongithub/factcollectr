@@ -18,6 +18,7 @@ const QuestionList = props => {
 
           <Question
             key={index}
+            questionNumber={index+1}
             question={question.question}
             correctAnswer={question.correct_answer}
             incorrectAnswers={question.incorrect_answers}

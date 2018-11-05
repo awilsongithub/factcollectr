@@ -1,11 +1,15 @@
 // react stuff
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 // TODO add local storage back?
 // import SimpleStorage from 'react-simple-storage';
 // other
 import $ from 'jquery';
 import './App.css';
+// our firebase config and init export
+import firebase from './firebase';
+
 // App components
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
@@ -20,16 +24,23 @@ class App extends Component {
     super();
     this.handleAnswerSubmission = this.handleAnswerSubmission.bind(this);
     this.state = {
+      username: '',
       questions: [],
       loading: false,
       showStart: true,
       showQuiz: false,
+      showScore: false,
       showScores: false,
-      currentScore: {
+      allScores: [],
+      currentQuiz: {
+        category: '',
+        quizLength: 10,
         correct: 0,
         incorrect: 0,
-        unanswered: 10
+        answered: 0, // init here, reset to 0 every time we start a quiz. increment in handleAnswerSubmission
+        time: ''
       }
+
 
     }
   }
@@ -58,15 +69,24 @@ class App extends Component {
   // fetch data here, in top level component which
   // should handle data and behavior
   // Keep presentational components de-coupled
-  // componentDidMount() {
-  //   const script = document.createElement('script');
-  //
-  // }
+  componentDidMount() {
+  }
 
 
   /**===============================================
                     OTHER METHODS
   ================================================== */
+
+  saveScore = quizScore => {
+    quizScore.anotherprop = 'added later';
+    console.log('called saveScore', quizScore);
+
+    // 'scores' space in db is where we want this stored
+    const scoresRef = firebase.database().ref('scores');
+    // send object for storage
+    scoresRef.push(quizScore);
+  }
+
 
   handleCategorySelection = (categoryObj) => {
     console.log('handling cat string', categoryObj)
@@ -84,15 +104,30 @@ class App extends Component {
     this.setState({
       loading: true,
       showStart: false,
-      showQuiz: true
+      showQuiz: true,
+      currentQuiz: {
+        ...this.state.currentQuiz,
+        category: categoryObj.name,
+        answered: 0,
+        correct: 0,
+        incorrect: 0,
+        time: ''
+      }
     })
     // this.props.history.push('/game');
   }
 
+  // category: '',
+  // quizLength: 10,
+  // correct: 0,
+  // incorrect: 0,
+  // answered: 0, // init here, reset to 0 every time we start a quiz. increment in handleAnswerSubmission
+  // time: ''
+
 
   getQuestions = (categoryObj) => {
     console.log('getQuestions called with cat ', categoryObj)
-    const apiUrl = `https://opentdb.com/api.php?amount=20&category=${categoryObj.key}&difficulty=easy`;
+    const apiUrl = `https://opentdb.com/api.php?amount=${this.state.currentQuiz.quizLength}&category=${categoryObj.key}&difficulty=easy`;
     fetch(apiUrl)
       .then(response => response.json())
       .then(response => response.results)
@@ -130,36 +165,47 @@ class App extends Component {
     }
   }
 
-  handleAnswerSubmission = (indexOfGuess, indexOfCorrect, e) => {
+  setShowScoreToTrue = () => {
+    // setTimeout is a method of Window Object
+    // arrow fn uses this= app though
+    setTimeout( () => {
+      this.setState({showScore: true});
+    }, 3000)
+  }
+
+  handleAnswerSubmission = (indexOfGuess, indexOfCorrect, questionNumber, e) => {
     e.preventDefault();
 
+      // provide feedback, update state
      if(indexOfCorrect === indexOfGuess){
        this.provideSubmissionFeedback(e.target, 'correct', indexOfCorrect);
        this.setState({
-         currentScore: {
-           ...this.state.currentScore,
-           correct:this.state.currentScore.correct+1,
-           unanswered: this.state.currentScore.unanswered-1
+         currentQuiz: {
+           ...this.state.currentQuiz,
+           correct:this.state.currentQuiz.correct+1,
+           unanswered: this.state.currentQuiz.unanswered-1
          }
        })
      } else {
        e.target.classList.add('btn-wrong-answer', 'disabled');
        this.provideSubmissionFeedback(e.target, 'incorrect', indexOfCorrect);
        this.setState({
-         currentScore: {
-           ...this.state.currentScore,
-           incorrect:this.state.currentScore.incorrect+1,
-           unanswered: this.state.currentScore.unanswered-1
+         currentQuiz: {
+           ...this.state.currentQuiz,
+           incorrect:this.state.currentQuiz.incorrect+1,
+           unanswered: this.state.currentQuiz.unanswered-1
          }
        })
      }
 
-      // move to next carousel/question after delay
-      setTimeout(function(){
-        $('.carousel').carousel('next');
-      }, 3000)
-
-
+     // if done, go show score
+     if(questionNumber >= this.state.currentQuiz.quizLength) {
+       this.setShowScoreToTrue();
+     } else {
+        setTimeout(function(){
+          $('.carousel').carousel('next');
+        }, 3000)
+     }
   }
 
   /**
@@ -188,11 +234,13 @@ class App extends Component {
               />}
             />
             <Route path="/play" render={() =>   <QuizScreen
-                currentScore={this.state.currentScore}
-                currentCategory={this.state.currentCategory}
+                showScore={this.state.showScore}
+                currentQuiz={this.state.currentQuiz}
+                currentCategory={this.state.currentQuiz.category}
                 currentTime='1:42'
                 questions={this.state.questions}
                 handleAnswerSubmission={this.handleAnswerSubmission}
+                saveScore={this.saveScore}
               />}
             />
 

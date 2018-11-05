@@ -32,8 +32,8 @@ const Carousel = props => {
       <div className="carousel-inner">
         {props.questions.map( (question, index) =>
           <Question
-            questionIndex={index}
             key={index}
+            questionNumber={index+1}
             question={question.question}
             correctAnswer={question.correct_answer}
             incorrectAnswers={question.incorrect_answers}
