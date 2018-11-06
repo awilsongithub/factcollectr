@@ -18,6 +18,27 @@ import HallOfFame from './HallOfFame';
 // TODO NOT WORKING!
 // import GoogleCustomSearch from './GoogleCustomSearch';
 
+// trivia question categories
+import categoriesArray from './categories.json';
+
+// computers
+// sports
+// history
+// entertainment (music)
+// comics
+// anime & manga
+// video games
+// board games
+// mythology
+// books     10
+// art
+// celebrities
+// politics
+// general knowledge     9
+// science (gadgets)
+
+
+
 class App extends Component {
 
   constructor() {
@@ -45,14 +66,21 @@ class App extends Component {
     }
   }
 
-  categories = [
-    {name: 'Random', key: ''},
-    {name: 'Animals', key: '27'},
-    {name: 'Science & Nature', key: '17'},
-    {name: 'Geography', key: '22'},
-    {name: 'Television', key: '14'},
-    {name: 'Movies', key: '11'}
-  ]
+  categories = categoriesArray;
+
+  // categories = [
+  //   {name: 'Random', key: ''},
+  //   {name: 'Animals', key: '27'},
+  //   {name: 'Science & Nature', key: '17'},
+  //   {name: 'Geography', key: '22'},
+  //   {name: 'Television', key: '14'},
+  //   {name: 'Movies', key: '11'}
+  // ]
+
+
+
+
+
 
   scores = [
     {name: 'Biff', score: '99%', time: '1:22', category: 'Animals'},
@@ -80,7 +108,6 @@ class App extends Component {
   saveScore = quizScore => {
     quizScore.anotherprop = 'added later';
     console.log('called saveScore', quizScore);
-
     // 'scores' space in db is where we want this stored
     const scoresRef = firebase.database().ref('scores');
     // send object for storage
@@ -89,17 +116,14 @@ class App extends Component {
 
 
   handleCategorySelection = (categoryObj) => {
+    this.setState({
+      questions: []
+    })
     console.log('handling cat string', categoryObj)
     this.startQuiz(categoryObj);
-
-    // setState of showQuiz: true
-    // in render of app, if(this.state.showQuiz === true){
-    // return <Redirect to='/game' /> }
   }
 
   startQuiz = (categoryObj) => {
-    // e.preventDefault();
-    // console.log('startQuiz e', e.target)
     this.getQuestions(categoryObj);
     this.setState({
       loading: true,
@@ -117,17 +141,13 @@ class App extends Component {
     // this.props.history.push('/game');
   }
 
-  // category: '',
-  // quizLength: 10,
-  // correct: 0,
-  // incorrect: 0,
-  // answered: 0, // init here, reset to 0 every time we start a quiz. increment in handleAnswerSubmission
-  // time: ''
-
 
   getQuestions = (categoryObj) => {
     console.log('getQuestions called with cat ', categoryObj)
-    const apiUrl = `https://opentdb.com/api.php?amount=${this.state.currentQuiz.quizLength}&category=${categoryObj.key}&difficulty=easy`;
+    const len = this.state.currentQuiz.quizLength;
+    const cat = categoryObj.id;
+    const apiUrl = `https://opentdb.com/api.php?amount=${len}&category=${cat}`;
+
     fetch(apiUrl)
       .then(response => response.json())
       .then(response => response.results)
@@ -140,17 +160,6 @@ class App extends Component {
         });
       });
   }
-
-  // TODO function to turn btn green/render
-  // caled from handleAnswerSubmission
-  // on that particular question
-  // at the randomInsertionPoint
-  // set a class
-  //
-  //
-  //
-  //
-  //
 
   provideSubmissionFeedback = (target, guess, indexOfCorrect) => {
     const userGuessBtn = $(target);
@@ -208,16 +217,6 @@ class App extends Component {
      }
   }
 
-  /**
-   * IMPLEMENTING REACT ROUTER
-   * npm install, import router components
-   * browserRouter,
-   * new Header always (with nav)
-   * / (home) StartScreen, rename home?
-   * /play > QuizScreen rename play?
-   * /scores new
-   */
-
   render() {
 
     return (
@@ -244,9 +243,6 @@ class App extends Component {
               />}
             />
 
-            {/* route /scores goes to component scores
-              which i could just do ui, then just save to state
-               */}
             <Route path='/hall' render={() => <HallOfFame
               scores={this.scores}
             />} />
