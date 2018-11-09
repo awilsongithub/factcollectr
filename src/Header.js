@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = props => {
   return (
-    <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <nav className="navbar fixed-top navbar-expand-sm navbar-dark">
       <div className='container'>
 
         {/* LOGO HOME LINK */}

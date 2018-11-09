@@ -22,31 +22,59 @@ const Score = props => {
     <div className="card" >
       <div className="card-body">
 
-        <h5 className="card-title">Quiz Score</h5>
-        <p className="card-text">Category: {quizScore.category}</p>
-        <p className="card-text">Score: {quizScore.percentString}</p>
-        <p className="card-text">Time: don't have time yet...</p>
-        <a
-          href="#"
-          className="btn btn-primary"
-          onClick={(e) => props.saveScore(quizScore, e)}
-        >Save Score to Hall of Fame
-        </a>
+        <div class='row'>
+
+          <div class='col-sm-12 col-md-4'>
+            <h2 className="card-title">
+              Score: {quizScore.percentString}
+            </h2>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <h2 className="card-title">
+              Time: 9:99
+            </h2>
+          </div>
+
+          <div class='col-sm-12 col-md-4'>
+            <a href="#" className="btn btn-primary" onClick={(e) => props.saveScore(quizScore, e)}>
+              Save to Hall of Fame
+            </a>
+          </div>
+
+        </div>
 
 
-        <h5 className="card-title">Questions</h5>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            Cats have whiskers under their paws and the quistion could be longer than this.
-            <br />
-            <small>answer</small>
-          </li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Morbi leo risus</li>
-          <li className="list-group-item">Porta ac consectetur ac</li>
-          <li className="list-group-item">Vestibulum at eros</li>
-        </ul>
 
+
+        <h2 class="card-title">Quiz Recap</h2>
+        
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">List group item heading</h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">List group item heading</h5>
+              <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">List group item heading</h5>
+              <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+          </a>
+        </div>
 
 
 

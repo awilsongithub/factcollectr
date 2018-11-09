@@ -45,7 +45,7 @@ class StartScreen extends React.Component {
     return (
 
       <div>
-        <h2>Choose Category to Start Quiz</h2>
+        <h2 class='text-white'>Choose Category to Start Quiz</h2>
         <div className="row card-deck">
 
           {this.props.categories.map( (cat, i) =>
@@ -57,6 +57,7 @@ class StartScreen extends React.Component {
                   onClick={(e) => this.props.handleCategorySelection(cat, e)}
                 >
                   <div className="card-body">
+                  <i class={`flaticon-${cat.icon}`}></i>
                     <h5 className="card-title">{cat.name}</h5>
                     {/* <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p> */}
                   </div>

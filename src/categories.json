@@ -1,98 +1,122 @@
 [
    {
       "id": 9,
-      "name": "General Knowledge"
+      "name": "Random",
+      "icon": "dice"
    },
    {
       "id": 10,
-      "name": "Entertainment: Books"
+      "name": "Books",
+      "icon": "open-book"
    },
    {
       "id": 11,
-      "name": "Entertainment: Film"
+      "name": "Film",
+      "icon": "movie"
    },
    {
       "id": 12,
-      "name": "Entertainment: Music"
+      "name": "Music",
+      "icon": "trumpet"
    },
    {
       "id": 13,
-      "name": "Entertainment: Musicals & Theatres"
+      "name": "Musicals & Theatre",
+      "icon": "stage"
    },
    {
       "id": 14,
-      "name": "Entertainment: Television"
+      "name": "TV",
+      "icon": "tv-screen"
    },
    {
       "id": 15,
-      "name": "Entertainment: Video Games"
+      "name": "Video Games",
+      "icon": "gamepad"
    },
    {
       "id": 16,
-      "name": "Entertainment: Board Games"
+      "name": "Board Games",
+      "icon": "chess"
    },
    {
       "id": 17,
-      "name": "Science & Nature"
+      "name": "Science & Nature",
+      "icon": "science"
    },
    {
       "id": 18,
-      "name": "Science: Computers"
+      "name": "Computers",
+      "icon": "software"
    },
    {
       "id": 19,
-      "name": "Science: Mathematics"
+      "name": "Mathematics",
+      "icon": "calculator"
    },
    {
       "id": 20,
-      "name": "Mythology"
+      "name": "Mythology",
+      "icon": "quetzalcoatl"
    },
    {
       "id": 21,
-      "name": "Sports"
+      "name": "Sports",
+      "icon": "dice"
    },
    {
       "id": 22,
-      "name": "Geography"
+      "name": "Geography",
+      "icon": "dice"
    },
    {
       "id": 23,
-      "name": "History"
+      "name": "History",
+      "icon": "scroll"
    },
    {
       "id": 24,
-      "name": "Politics"
+      "name": "Politics",
+      "icon": "human-rights"
    },
    {
       "id": 25,
-      "name": "Art"
+      "name": "Art",
+      "icon": "artist"
    },
    {
       "id": 26,
-      "name": "Celebrities"
+      "name": "Celebrities",
+      "icon": "spotlight"
    },
    {
       "id": 27,
-      "name": "Animals"
+      "name": "Animals",
+      "icon": "animal"
    },
    {
       "id": 28,
-      "name": "Vehicles"
+      "name": "Vehicles",
+      "icon": "tractor"
    },
    {
       "id": 29,
-      "name": "Entertainment: Comics"
+      "name": "Comics",
+      "icon": "the-avengers"
    },
    {
       "id": 30,
-      "name": "Science: Gadgets"
+      "name": "Gadgets",
+      "icon": "gun"
    },
    {
       "id": 31,
-      "name": "Entertainment: Japanese Anime & Manga"
+      "name": "Anime & Manga",
+      "icon": "cartoons"
    },
    {
       "id": 32,
-      "name": "Entertainment: Cartoon & Animations"
+      "name": "Cartoons",
+      "icon": "cartoons"
    }
 ]
