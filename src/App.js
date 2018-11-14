@@ -7,8 +7,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // other
 import $ from 'jquery';
 import './App.css';
-// our firebase config and init export
-import firebase from './firebase';
+// our firebase config-init and auth modules
+import firebase, { auth, provider } from './firebase';
+
 
 // App components
 import StartScreen from './StartScreen';
@@ -46,6 +47,7 @@ class App extends Component {
     this.handleAnswerSubmission = this.handleAnswerSubmission.bind(this);
     this.state = {
       username: '',
+      user: null, // nobody is authenticated initially
       questions: [],
       loading: false,
       showStart: true,
@@ -98,12 +100,33 @@ class App extends Component {
   // should handle data and behavior
   // Keep presentational components de-coupled
   componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
   }
 
 
   /**===============================================
                     OTHER METHODS
   ================================================== */
+
+  login = () => {
+    alert('login called')
+    auth.signInWithPopup(provider) // provider = Google Auth Provider
+      .then((result) => {
+        const user = result.user; // gooogle user name, photo etc.
+        this.setState({ user });
+      });
+  }
+
+  logout = () => {
+    auth.signOut()
+      .then(() => {
+        this.setState({ user: null });
+      });
+  }
 
   saveScore = quizScore => {
     quizScore.anotherprop = 'added later';
@@ -165,7 +188,7 @@ class App extends Component {
     const userGuessBtn = $(target);
     const allBtns = userGuessBtn.siblings().addBack();
     const correctAnswerBtn = allBtns.get(indexOfCorrect);
-    allBtns.addClass('disabled');
+    // allBtns.addClass('disabled');
     if(guess === 'correct'){
       userGuessBtn.addClass('btn-correct');
     } else {
@@ -223,7 +246,14 @@ class App extends Component {
 
       <BrowserRouter>
         <div className="App container">
-          <Route component={Header} />
+
+          <Route render={() => <Header
+              user={this.state.user}
+              login={this.login}
+              logout={this.logout}
+            />}
+          />
+
 
           <Switch>
             <Route exact path="/" render={() => <StartScreen

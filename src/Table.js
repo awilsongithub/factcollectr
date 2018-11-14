@@ -22,6 +22,14 @@ class ScoresTable extends React.Component {
     super();
   }
 
+  columns = [{}]
+
+  componentDidMount() {
+    const el = document.getElementsByClassName('reactable-filter-input')[0];
+    el.setAttribute('placeholder', 'search scores');
+    el.focus();
+  }
+
   // tableData = {};
   //
   // setTableData = () => {
@@ -36,26 +44,35 @@ class ScoresTable extends React.Component {
 
   renderTable() {
     return (
-      <Table
-        className='table'
-        filterable={['category', 'user']}
-        noDataText="No matching records found"
-        itemsPerPage={10}
-        currentPage={0}
-        sortable={true}
-        data={this.props.allScores}
-      >
-        // TODO NO DATA SHOWS UP WHEN I ADD THEAD ELEMENT
-        // <Thead>
-        //   <Th column="name">ID</Th>
-        //   <Th column="leader">Category</Th>
-        //   <Th column="assignment">Date</Th>
-        //   <Th column="members">Decimal</Th>
-        //   <Th column="leader">Score</Th>
-        //   <Th column="assignment">Time</Th>
-        //   <Th column="members">Player</Th>
-        // </Thead>
-      </Table>
+      <div className='table-hall-of-fame'>
+        <Table
+          className='table'
+          filterable={['category', 'user']}
+          noDataText="No matching records found"
+          itemsPerPage={100}
+          currentPage={0}
+          sortable={true}
+          data={this.props.allScores}
+          columns={[
+            {key: 'user', label: 'user'},
+            {key: 'category', label: 'category'},
+            {key: 'percentString', label: 'score'},
+            {key: 'date', label: 'date'}
+          ]}
+        >
+          // TODO NO DATA SHOWS UP WHEN I ADD THEAD ELEMENT
+          // <Thead>
+          //   <Th column="name">ID</Th>
+          //   <Th column="leader">Category</Th>
+          //   <Th column="assignment">Date</Th>
+          //   <Th column="members">Decimal</Th>
+          //   <Th column="leader">Score</Th>
+          //   <Th column="assignment">Time</Th>
+          //   <Th column="members">Player</Th>
+          // </Thead>
+        </Table>
+      </div>
+
     )
   }
 

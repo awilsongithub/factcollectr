@@ -1,14 +1,20 @@
 
+
+
+
+
 body {
   /* because of fixed navbar */
   padding-top: 55px;
-  background-color: #e6e8be;
   font-family: 'Montserrat', sans-serif;
   /* background image */
   background: linear-gradient(rgba(90, 62, 76, 0.5), rgba(0, 0, 0, 0.7)), url(./assets/library_photo.png);
   background-size: cover;
+  height: 100vh;
 }
-
+.navbar {
+  background: #291f29;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
 }
@@ -24,11 +30,7 @@ button {
   width: 100%;
   margin-bottom: 10px;
 }
-/* because of fixed navbar */
-body {
-  padding-top: 55px;
-  background-color: #e6e8be;
-}
+
 .card {
   min-height: 300px;
   margin-bottom: 10px;
@@ -42,28 +44,37 @@ body {
   padding-right: 5px;
   padding-left: 5px;
 }
+
+.card-deck .card-body {
+  padding: .5rem 1.25rem;
+}
 .card-deck .card {
   margin-right: 5px;
   margin-bottom: 15px;
   margin-left: 5px;
 }
 .card-btn {
-  min-height: 100px;
+  min-height: 50px;
   /* max-height: 100px; */
   cursor: pointer;
 }
 .btn-outline-secondary:hover {
-  background-color: #e9ecef;
+  /* background-color: #e9ecef; */
   color: inherit;
 }
 .btn.btn-wrong, .btn.btn-wrong:hover {
   background: #f80100;
+  /* background: #F44D40; */
+
 }
 .btn.btn-correct, .btn.btn-correct:hover {
   background: #0EBF00;
+  /* background: #5F9E5A; */
+
 }
 .btn.btn-correct-animate, .btn.btn-correct-animate:hover {
   background: #0EBF00;
+  /* background: #5F9E5A; */
   animation-name: flash;
   animation-duration: 2s;
   -webkit-animation-name: flash;
@@ -153,9 +164,16 @@ h5.card-title {
   vertical-align: super;
 }
 .card:hover {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-  0 1px 10px 0 rgba(0, 0, 0, 0.12),
-  0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.7),
+  0 1px 10px 0 rgba(0, 0, 0, 0.6),
+  0 2px 4px -1px rgba(0, 0, 0, 0.8);
+
+}
+.card-deck .card:hover {
+  background-color: #f4f2f4;
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
 }
 /* h5.card-title:hover, .card-body i:hover {
   text-decoration: none;
@@ -165,4 +183,74 @@ h5.card-title {
 .card-deck .col-xl-3 {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.table-hall-of-fame .table {
+  color: black;
+  border-radius: 5px;
+  background-color: rgba(248, 249, 250, .9);
+}
+.table-hall-of-fame thead td {
+  border-top: none;
+}
+.reactable-column-header {
+  background: #291f29;
+  color: white;
+}
+/* add css for class .form-control */
+.reactable-filter-input {
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.hall-of-fame h2 {
+  color: white;
+}
+
+.reactable-pagination tr {
+  text-align: center;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+.navbar-nav .nav-link.nav-link-auth {
+  color: white;
+  float: right;
+}
+.navbar-nav .nav-link.nav-link-auth:hover {
+  color: white;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+.nav-right {
+  margin-left: auto;
+}
+.user-profile img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right:  10px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 576px) {
+
+  .nav-right {
+    margin-left: unset;
+  }
+
+  .navbar-nav .nav-link.nav-link-auth {
+    color: white;
+    float: none;
+  }
 }

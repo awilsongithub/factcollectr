@@ -50,7 +50,7 @@ class HallOfFame extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='hall-of-fame'>
         <h2>Hall of Fame</h2>
 
         <Table

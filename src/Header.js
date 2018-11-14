@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
@@ -22,6 +23,19 @@ const Header = props => {
             <NavLink className="nav-item nav-link" exact to="/">Home</NavLink>
 
             <NavLink className="nav-item nav-link" to="/hall">Hall of Fame</NavLink>
+
+            { props.user ?
+              <div className='nav-right'>
+                <span className='user-profile d-none d-sm-inline'>
+                  <img src={props.user.photoURL} />
+                  <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
+                </span>
+                <a onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
+              </div>
+              :
+              <a onClick={props.login} className='nav-link-auth nav-item nav-link'>Log In</a>
+            }
+
           </div>
 
         </div>
@@ -30,6 +44,10 @@ const Header = props => {
   )
 }
 
-// Header.propTypes = {}
+Header.propTypes = {
+  // user: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+}
 
 export default Header;
