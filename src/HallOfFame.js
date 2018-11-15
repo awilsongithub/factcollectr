@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from './firebase';
-// import PropTypes from 'prop-types';
+import $ from 'jquery';
 import Table from './Table';
 
 class HallOfFame extends React.Component {
@@ -15,7 +15,7 @@ class HallOfFame extends React.Component {
   componentDidMount() {
     const scoresRef = firebase.database().ref('scores');
 
-    // on mount and when update to scorres in db, update state
+    // update state on mount AND when update to scores in db
     scoresRef.on('value', (snapshot) => {
       console.log('db scores value change', snapshot.val());
       let allScores = snapshot.val();
@@ -38,13 +38,21 @@ class HallOfFame extends React.Component {
         allScores: newAllScores
       });
 
+      // TODO: only show when new score, not on each mount
+      const newScoreAlert = $('.alert-success');
+      newScoreAlert.show(500);
+      setTimeout(function(){
+        newScoreAlert.hide(500);
+      }, 3000);
+
     });
   }
 
   render() {
     return (
       <div className='hall-of-fame'>
-        <h2>Hall of Fame</h2>
+        <h2 className='d-inline-block'>Hall of Fame</h2>
+        <span className='alert alert-success' role='alert'>New score saved to Hall of Fame</span>
         <Table
           allScores={this.state.allScores}
         />
@@ -54,7 +62,6 @@ class HallOfFame extends React.Component {
 
 }
 
-// HallOfFame.propTypes = {
-// }
+// HallOfFame.propTypes = {}
 
 export default HallOfFame;

@@ -20,6 +20,10 @@ const Score = props => {
 
   console.log('quizScore', quizScore);
 
+  const authToSaveAlert = ()  => {
+    alert('Please Log In to save your score.');
+  }
+
   return (
     <div>
 
@@ -40,11 +44,20 @@ const Score = props => {
             </h2>
           </div>
 
-          <div class='col-sm-12 col-md-4 text-right'>
-            <NavLink to='/hall' className="btn btn-primary" onClick={(e) => props.saveScore(quizScore, e)}>
-            Save to Hall of Fame
-            </NavLink>
-          </div>
+
+            <div class='col-sm-12 col-md-4 text-right'>
+
+              { !props.user ?
+                <button className="btn btn-primary" onClick={authToSaveAlert}>Save to Hall of Fame</button>
+                :
+                <NavLink to='/hall' className="btn btn-primary" onClick={(e) => props.saveScore(quizScore, e)} >Save to Hall of Fame</NavLink>
+              }
+
+            </div>
+
+
+
+
 
         </div>
 

@@ -233,6 +233,14 @@ h5.card-title {
   margin-left: 10px;
 }
 
+.hall-of-fame .alert-success {
+  color: white;
+  background-color: #0EBF00;
+  border: none;
+  float: right;
+  display: none;
+}
+
 @media screen and (max-width: 576px) {
   .nav-right {
     margin-left: unset;
