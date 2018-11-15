@@ -31,12 +31,13 @@ class QuizScreen extends React.Component {
       return (
         <div>
           <div className='stats'>
-            <div><span>Category: </span>{this.props.currentCategory}</div>
+            <div className='text-left'><span>Category: </span>{this.props.currentCategory}</div>
             <CurrentScore
               currentScore={this.props.currentQuiz}
               currentCategory='General'
               currentTime='1:42'
             />
+            <div className='text-right'>Time: TODO</div>
           </div>
           <Carousel
             questions={this.props.questions}

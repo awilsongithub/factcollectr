@@ -3,10 +3,10 @@
 - Log in to github.com  
 - Go to https://github.com/awilsongithub/factcollectr
 - Copy the "Clone or download" (with https) url (https://github.com/awilsongithub/factcollectr.git)
-- In your computers terminal navigate to the directory into which you'd like to clone the factCollectr project directory.
+- In your computers terminal navigate to the directory into which you'd like to clone the factCollectr project directory and run the following commands:
 ```
 git clone https://github.com/awilsongithub/factcollectr.git
-cd into factCollectr directory
+cd factcollectr
 npm install
 npm start
 ```
@@ -27,13 +27,13 @@ Bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 2. "/play" (QuizScreen component)
 3. "/hall" (Hall of Fame component)
 
-**Bonus: Also implements CRUD operations with associated UI:**
+**Select a read-only API and implement a "rich" interface using multiple (at least 3) resources (end points):**
+I used the [Open Trivia Database](https://opentdb.com) API. Users can fetch questions from 24 different endpoints representing different categories of trivia questions. On fetch, users are routed to the QuizScreen where they answer questions. On answering the final question, the Score component renders showing a quiz recap with an option to save the score to the database. If they choose to save and are not yet logged in, the login modal is triggered where users can authenticate using Google Auth (via firebase authentication). Users must be authenticated to save a score. TODO: Once authenticated users are taken to the Hall of Fame where the save is confirmed and all scores displayed.
+
+**Note: App also implements 2 CRUD operations with associated UI:**
 [Firebase Realtime Database](https://firebase.google.com/) used to:
 1. Save quiz scores (Create) (see "saveScore" method on App component).
 2. Read quiz scores on change to realtime database (see HallOfFame component)
-
-**Select a read-only API and implement a "rich" interface using multiple (at least 3) resources (end points):**
-I used the [Open Trivia Database](https://opentdb.com) API. Users can fetch questions from 24 different endpoints representing different categories of trivia questions. On fetch, users are routed to the QuizScreen where they answer questions. On answering the final question, the Score component renders showing a quiz recap with an option to save the score to the database. If they choose to save and are not yet logged in, the login modal is triggered where users can authenticate using Google Auth (via firebase authentication). Users must be authenticated to save a score. TODO: Once authenticated users are taken to the Hall of Fame where the save is confirmed and all scores displayed.
 
 **Project also:**
 - Is in its own Github repo

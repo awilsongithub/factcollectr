@@ -32,7 +32,7 @@ const Score = props => {
 
           <div class='col-sm-12 col-md-4'>
             <h2 className="card-title">
-              Time: 9:99
+              Time: TODO
             </h2>
           </div>
 
@@ -48,7 +48,7 @@ const Score = props => {
 
 
         <h2 class="card-title">Quiz Recap</h2>
-        
+
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">

@@ -113,7 +113,6 @@ class App extends Component {
   ================================================== */
 
   login = () => {
-    alert('login called')
     auth.signInWithPopup(provider) // provider = Google Auth Provider
       .then((result) => {
         const user = result.user; // gooogle user name, photo etc.
