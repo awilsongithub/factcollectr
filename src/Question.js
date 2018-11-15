@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Answers from './Answers';
 
+/**
+ * THE QUESTION COMPONENT HTML IS A BOOTSTRAP CARD
+ * WE REPLACE ENCODED CHARACTERS IN QUESTIONS AND Answers
+ * AND SET ACTIVE CLASS IF AT FIRST QUESTION
+ * ANSWERS ARE A SEPARATE NESTED COMPONENT 
+ */
 const Question = props => {
 
   const question = props.question

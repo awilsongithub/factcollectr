@@ -8,7 +8,10 @@ const Carousel = props => {
   const dataRide = false;
   var output;
 
-  // decide what is our output?
+  // determine our output
+  // TODO: not sure conditional statements are all working...
+  // questions are displayed with a simple bootstrap carousel
+  // with customized indicators and event based behaviors
   if(props.questions.length === 0 && props.loading === false) {
     output = null;
   } else if(props.questions.length === 0 && props.loading === true){
@@ -46,8 +49,6 @@ const Carousel = props => {
   )
 }
 
-
-  // return our output
   return (<div>{output}</div>)
 }
 

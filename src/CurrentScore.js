@@ -3,17 +3,12 @@ import PropTypes from 'prop-types';
 
 const CurrentScore = props => {
 
-
   return (
     <div className='text-center'>
-
       <span>
         <span>Points: </span>
         {props.currentScore.correct}
       </span>
-      {/* <span>Incorrect: {props.currentScore.incorrect} </span>
-      <span>Unanswered: {props.currentScore.unanswered} </span> */}
-
     </div>
   )
 }

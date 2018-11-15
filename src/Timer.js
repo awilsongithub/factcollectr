@@ -1,6 +1,11 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+/**
+ * TIMER CREATES AND UPDATES A TIMER STRING EACH SECOND
+ * THEN TRIES TO CLEAR SETINTERVAL WHEN COMPONENT UNMOUNTS
+ * BUT SOMETHING IS AMISS: TODO: Warning: Can't call setState (or forceUpdate) on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+ */
 class Timer extends React.Component {
 
   constructor(props){
@@ -49,7 +54,6 @@ class Timer extends React.Component {
       </span>
     )
   }
-
 }
 
 // Timer.propTypes = {

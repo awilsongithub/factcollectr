@@ -12,6 +12,9 @@ class HallOfFame extends React.Component {
     }
   }
 
+  // get reference to db entity
+  // on db updates, update our data in real time
+  // TODO: only show "score saved" alert when new score, not on each mount
   componentDidMount() {
     const scoresRef = firebase.database().ref('scores');
 
@@ -38,7 +41,6 @@ class HallOfFame extends React.Component {
         allScores: newAllScores
       });
 
-      // TODO: only show when new score, not on each mount
       const newScoreAlert = $('.alert-success');
       newScoreAlert.show(500);
       setTimeout(function(){
@@ -53,9 +55,7 @@ class HallOfFame extends React.Component {
       <div className='hall-of-fame'>
         <h2 className='d-inline-block'>Hall of Fame</h2>
         <span className='alert alert-success' role='alert'>New score saved to Hall of Fame</span>
-        <Table
-          allScores={this.state.allScores}
-        />
+        <Table allScores={this.state.allScores} />
       </div>
     )
   }

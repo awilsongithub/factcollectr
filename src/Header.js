@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
+
+/**
+ * THIS COMPONENT IS BASICALLY A RESPONSIVE BOOTSTRAP NAVBAR
+ * WITH REACT ROUTER NAVLINKS
+ * AND SOME CONDITIONAL RENDERING OF LOGIN/LOGOUT LINKS
+ */
 const Header = props => {
+
   return (
     <nav className="navbar fixed-top navbar-expand-sm navbar-dark">
       <div className='container'>

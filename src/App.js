@@ -1,50 +1,30 @@
 // react stuff
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 // TODO add local storage back?
 // import SimpleStorage from 'react-simple-storage';
 // other
 import $ from 'jquery';
 import './App.css';
-// our firebase config-init and auth modules
+// firebase config-init and auth modules
 import firebase, { auth, provider } from './firebase';
-
-
 // App components
 import StartScreen from './StartScreen';
 import QuizScreen from './QuizScreen';
 import Header from './Header';
 import HallOfFame from './HallOfFame';
-// TODO NOT WORKING!
-// import GoogleCustomSearch from './GoogleCustomSearch';
-
 // trivia question categories
 import categoriesArray from './categories.json';
-
-// computers
-// sports
-// history
-// entertainment (music)
-// comics
-// anime & manga
-// video games
-// board games
-// mythology
-// books     10
-// art
-// celebrities
-// politics
-// general knowledge     9
-// science (gadgets)
-
-
+// TODO NOT WORKING!
+// import GoogleCustomSearch from './GoogleCustomSearch';
 
 class App extends Component {
 
   constructor() {
     super();
     this.handleAnswerSubmission = this.handleAnswerSubmission.bind(this);
+
+    // most of state is handled here at the top level of our app
     this.state = {
       username: '',
       user: null, // nobody is authenticated initially
@@ -63,41 +43,19 @@ class App extends Component {
         answered: 0, // init here, reset to 0 every time we start a quiz. increment in handleAnswerSubmission
         time: ''
       }
-
-
     }
   }
 
-  categories = categoriesArray;
+  // TODO: alphabetize categories 
+  categories = categoriesArray; // imported
 
-  // categories = [
-  //   {name: 'Random', key: ''},
-  //   {name: 'Animals', key: '27'},
-  //   {name: 'Science & Nature', key: '17'},
-  //   {name: 'Geography', key: '22'},
-  //   {name: 'Television', key: '14'},
-  //   {name: 'Movies', key: '11'}
-  // ]
-
-
-
-
-
-
-  scores = [
-    {name: 'Biff', score: '99%', time: '1:22', category: 'Animals'},
-    {name: 'Bob', score: '98%', time: '1:55', category: 'Science'},
-    {name: 'DAve', score: '99%', time: '1:22', category: 'Animals'},
-    {name: 'Dood', score: '99%', time: '1:22', category: 'Animals'},
-    {name: 'What', score: '99%', time: '1:22', category: 'Random'}
-  ]
 
   /**===============================================
                   LIFECYCLE METHODS
   ================================================== */
 
-  // fetch data here, in top level component which
-  // should handle data and behavior
+  // fetch data here
+  // top level component should handle most data and behavior
   // Keep presentational components de-coupled
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
@@ -107,15 +65,18 @@ class App extends Component {
     });
   }
 
-
   /**===============================================
                     OTHER METHODS
   ================================================== */
 
+  // This uses firebase Authentication
+  // provider = Google Auth Provider
+  // which gives us access to google acct email, name, photo
+  // some features like saving a score are conditional on authentication
   login = () => {
-    auth.signInWithPopup(provider) // provider = Google Auth Provider
+    auth.signInWithPopup(provider)
       .then((result) => {
-        const user = result.user; // gooogle user name, photo etc.
+        const user = result.user;
         this.setState({ user });
       });
   }
@@ -127,8 +88,8 @@ class App extends Component {
       });
   }
 
+  // Save scores to firebase realtime database
   saveScore = quizScore => {
-    // console.log('called saveScore', quizScore);
     if (this.state.user) {
       const scoresRef = firebase.database().ref('scores');
       scoresRef.push(quizScore);
@@ -138,14 +99,15 @@ class App extends Component {
     }
   }
 
+  // handle user click on a quiz category
   handleCategorySelection = (categoryObj) => {
     this.setState({
       questions: []
     })
-    console.log('handling cat string', categoryObj)
     this.startQuiz(categoryObj);
   }
 
+  // start quiz. call helper getQuestiosn and reset stats/score values
   startQuiz = (categoryObj) => {
     this.getQuestions(categoryObj);
     this.setState({
@@ -161,12 +123,15 @@ class App extends Component {
         time: ''
       }
     })
+    // NOTE: using links instead of history.push
     // this.props.history.push('/game');
   }
 
-
+  // call the api with several dynamic values in the url:
+  // 1. quiz quizLength
+  // 2. user selected category
+  // on api response, set questions, categ on state
   getQuestions = (categoryObj) => {
-    console.log('getQuestions called with cat ', categoryObj)
     const len = this.state.currentQuiz.quizLength;
     const cat = categoryObj.id;
     const apiUrl = `https://opentdb.com/api.php?amount=${len}&category=${cat}`;
@@ -175,7 +140,6 @@ class App extends Component {
       .then(response => response.json())
       .then(response => response.results)
       .then(results => {
-        console.log('json received', results);
         this.setState({
           currentCategory: categoryObj.name,
           questions: results,
@@ -184,11 +148,11 @@ class App extends Component {
       });
   }
 
+  // provied green and/or red animated feedback to user
   provideSubmissionFeedback = (target, guess, indexOfCorrect) => {
     const userGuessBtn = $(target);
     const allBtns = userGuessBtn.siblings().addBack();
     const correctAnswerBtn = allBtns.get(indexOfCorrect);
-    // allBtns.addClass('disabled');
     if(guess === 'correct'){
       userGuessBtn.addClass('btn-correct');
     } else {
@@ -197,18 +161,33 @@ class App extends Component {
     }
   }
 
-  setShowScoreToTrue = () => {
+  // called when user has answered the final question
+  // showScore: true will cause render of Score component
+  setShowScore = (value) => {
     // setTimeout is a method of Window Object
-    // arrow fn uses this= app though
+    // use arrow fn so this = app (not Window)
     setTimeout( () => {
-      this.setState({showScore: true});
+      this.setState({showScore: value});
     }, 3000)
   }
 
+  // reset these each time we come back to StartScreen
+  // and other times?
+  // so when start another quiz it doesn't skip ahead to showing Score
+  resetShowValues = () => {
+    this.setState({
+      showQuiz: true,
+      showScore: false
+    })
+  }
+
+  // check user guess against correct
+  // call helper fn to provide provide feedback
+  // set value for correct so we can provide user score
+  // if this was the final question, show Score
   handleAnswerSubmission = (indexOfGuess, indexOfCorrect, questionNumber, e) => {
     e.preventDefault();
 
-      // provide feedback, update state
      if(indexOfCorrect === indexOfGuess){
        this.provideSubmissionFeedback(e.target, 'correct', indexOfCorrect);
        this.setState({
@@ -230,16 +209,17 @@ class App extends Component {
        })
      }
 
-     // if done, go show score
      if(questionNumber >= this.state.currentQuiz.quizLength) {
-       this.setShowScoreToTrue();
+       this.setShowScore(true);
      } else {
         setTimeout(function(){
           $('.carousel').carousel('next');
-        }, 3000)
+        }, 2500)
      }
   }
 
+  // render using React Router v4
+  // various component screens are rendered based on url (path)
   render() {
 
     return (
@@ -254,14 +234,16 @@ class App extends Component {
             />}
           />
 
-
           <Switch>
+
             <Route exact path="/" render={() => <StartScreen
                 startQuiz={this.startQuiz}
                 categories={this.categories}
                 handleCategorySelection={this.handleCategorySelection}
+                resetShowValues={this.resetShowValues}
               />}
             />
+
             <Route path="/play" render={() =>   <QuizScreen
                 showScore={this.state.showScore}
                 currentQuiz={this.state.currentQuiz}

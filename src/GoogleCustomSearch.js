@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
+// TODO: this feature isnt working .... 
 class GoogleCustomSearch extends React.Component {
 
-// insert the script
+// script
 componentDidMount() {
 
   (function() {
@@ -19,12 +20,12 @@ componentDidMount() {
 
 }
 
-// insert the dom container
+// dom container
  render(){
    return (
-       <div>
-         <div className="gcse-searchbox" />
-       </div>
+     <div>
+       <div className="gcse-searchbox" />
+     </div>
    )
  }
 }

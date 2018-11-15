@@ -6,6 +6,13 @@ import Timer from './Timer';
 import Carousel from './Carousel';
 import Score from './Score';
 
+/**
+ * QUIZSCREEN IS BASICALLY A CONTAINER THAT RENDERS EITHER
+ * SCORE OR A COLLECTION OF COMPONENTS MAKING UP THE QUIZ MODE UI
+ * CONDITIONALLY BASED ON SHOWSCORE: TRUE/FALSE
+ *  TODO refactor play mode jsx into a component so
+ *  we have 2 components here: score and play
+ */
 class QuizScreen extends React.Component {
 
   constructor(props){
@@ -13,11 +20,6 @@ class QuizScreen extends React.Component {
     this.state = {}
   }
 
-  // TODO PUT timer component back in beforre <CurrentScore />
-  // took it out as it had a bug.
-
-  // TODO refactor play mode jsx into a component so
-  // we have 2 components here: score and play
   render() {
     if(this.props.showScore === true) {
       return (
@@ -49,7 +51,7 @@ class QuizScreen extends React.Component {
             </div>
 
           </div>
-          
+
           <Carousel
             questions={this.props.questions}
             handleAnswerSubmission={this.props.handleAnswerSubmission}

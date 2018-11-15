@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+/**
+ * SCORE IS A CARD DISPLAYING THE SCORE AT END OF A QUIZ
+ * IT CALCULATES SOME HUMAN FRIENDLY DATA
+ * AND FLATTENS THE USER OBJECT INTO A FEW SPECIFIC PROPS ON QUIZSCORE Object
+ * THIS IS BECAUSE THE REACTABLE MODULE USED TO DISPLAY SORTABLE, FILTERABLE Data
+ * SEEMS UNABLE TO USE DEEPLY NESTED DATA STRUCTURES?? (SEE TABLE COMPONENT)
+ */
 const Score = props => {
 
   const quizScore = {};
@@ -26,44 +33,29 @@ const Score = props => {
 
   return (
     <div>
-
-    <div className="card" >
-      <div className="card-body">
-
-        <div class='row'>
-
-          <div class='col-sm-12 col-md-4'>
-            <h2 className="card-title">
-              Score: {quizScore.percentString}
-            </h2>
-          </div>
-
-          <div class='col-sm-12 col-md-4 text-center'>
-            <h2 className="card-title">
-              Time: TODO
-            </h2>
-          </div>
-
-
+      <div className="card" >
+        <div className="card-body">
+          <div class='row'>
+            <div class='col-sm-12 col-md-4'>
+              <h2 className="card-title">
+                Score: {quizScore.percentString}
+              </h2>
+            </div>
+            <div class='col-sm-12 col-md-4 text-center'>
+              <h2 className="card-title">
+                Time: TODO
+              </h2>
+            </div>
             <div class='col-sm-12 col-md-4 text-right'>
-
               { !props.user ?
                 <button className="btn btn-primary" onClick={authToSaveAlert}>Save to Hall of Fame</button>
                 :
                 <NavLink to='/hall' className="btn btn-primary" onClick={(e) => props.saveScore(quizScore, e)} >Save to Hall of Fame</NavLink>
               }
-
             </div>
-
-
-
-
-
+          </div>
         </div>
-
       </div>
-    </div>
-
     </div>
   )
 }

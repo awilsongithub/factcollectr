@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Question from './Question';
 
-
+/**
+ * QUESTIONLIST IS NOT used
+ * IT HAS BEEN REPLACED BY CAROUSEL
+ */
 const QuestionList = props => {
   var output;
 
-  // decide what is our output?
   if(props.questions.length === 0 && props.loading === false) {
     output = null;
   } else if(props.questions.length === 0 && props.loading === true){
@@ -25,13 +27,11 @@ const QuestionList = props => {
             handleAnswerSubmission={props.handleAnswerSubmission}
           />
 
-
         )}
       </div>
     )
   }
 
-  // return our output
   return (<div>{output}</div>)
 }
 

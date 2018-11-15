@@ -5,18 +5,21 @@ class Answers extends React.Component {
 
   constructor(props){
     super();
+
+    // Shuffle correct and incorrect answers randomly for each question
     this.randomInsertionPoint =  Math.floor( Math.random()*props.incorrectAnswers.length + 1);
     this.shuffledAnswers = props.incorrectAnswers.map(a => a); // then we'll add the correct answer...
     this.shuffledAnswers.splice(this.randomInsertionPoint, 0, props.correctAnswer)
   }
 
-  // this prevents recalculation of shuffledAnswers which
-  // causes buttons to shuffle when click on one initiates a state change
+  // prevent reshuffling of answers on user guess
   shouldComponentUpdate(nextProps){
     const differentAnswers = this.props.correctAnswer !== nextProps.correctAnswer;
     return differentAnswers;
   }
 
+  // render buttons for each answer.
+  // register click handler to check user guess
  render(){
    return (
      <div>

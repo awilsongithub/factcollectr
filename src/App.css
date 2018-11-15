@@ -16,30 +16,23 @@ h1, h2, h3, h4, h5, h6 {
 .App.container {
   padding-top: 15px;
 }
-
 button {
   margin-right: 5px;
 }
-
 .card button {
   width: 100%;
   margin-bottom: 10px;
 }
-
 .card {
   min-height: 335px;
   margin-bottom: 10px;
   box-shadow: 1px 2px 2px #666;
   border-radius: 4px;
 }
-.card:hover {
-  /* box-shadow: 1px 3px 2px #777; */
-}
 .card-deck .col {
   padding-right: 5px;
   padding-left: 5px;
 }
-
 .card-deck .card-body {
   padding: .5rem 1.25rem;
 }
@@ -50,26 +43,19 @@ button {
 }
 .card-btn {
   min-height: 50px;
-  /* max-height: 100px; */
   cursor: pointer;
 }
 .btn-outline-secondary:hover {
-  /* background-color: #e9ecef; */
   color: inherit;
 }
 .btn.btn-wrong, .btn.btn-wrong:hover {
   background: #f80100;
-  /* background: #F44D40; */
-
 }
 .btn.btn-correct, .btn.btn-correct:hover {
   background: #0EBF00;
-  /* background: #5F9E5A; */
-
 }
 .btn.btn-correct-animate, .btn.btn-correct-animate:hover {
   background: #0EBF00;
-  /* background: #5F9E5A; */
   animation-name: flash;
   animation-duration: 2s;
   -webkit-animation-name: flash;
@@ -93,17 +79,13 @@ button {
   80% {background-color: inherit; }
   100% {background-color: #0EBF00; }
 }
-
 .main-content {
   padding-top: 20px;
 }
-
 .gcse-searchbox {
   border: 2px solid red;
   height: 30px;
-
 }
-
 .carousel-indicators li {
   cursor: initial;
   background-color: lightgrey;
@@ -125,7 +107,6 @@ button {
   width: 30px;
   height: 30px;
 }
-
 .question-number {
   color: white;
 }
@@ -138,7 +119,6 @@ button {
 .stats > div {
   width: 33%;
 }
-
 [class^="flaticon-"]:before,
 [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after,
@@ -159,7 +139,6 @@ h5.card-title {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.7),
   0 1px 10px 0 rgba(0, 0, 0, 0.6),
   0 2px 4px -1px rgba(0, 0, 0, 0.8);
-
 }
 .card-deck .card:hover {
   background-color: #f4f2f4;
@@ -167,14 +146,12 @@ h5.card-title {
   -ms-transform: scale(1.02);
   transform: scale(1.02);
 }
-
 .card-deck .col-md-6,
 .card-deck .col-lg-4,
 .card-deck .col-xl-3 {
   padding-left: 5px;
   padding-right: 5px;
 }
-
 .table-hall-of-fame .table {
   color: black;
   border-radius: 5px;
@@ -205,11 +182,9 @@ h5.card-title {
 .hall-of-fame h2 {
   color: white;
 }
-
 .reactable-pagination tr {
   text-align: center;
 }
-
 .navbar-nav {
   width: 100%;
 }
@@ -232,7 +207,6 @@ h5.card-title {
   margin-right:  10px;
   margin-left: 10px;
 }
-
 .hall-of-fame .alert-success {
   color: white;
   background-color: #0EBF00;
@@ -245,7 +219,6 @@ h5.card-title {
   .nav-right {
     margin-left: unset;
   }
-
   .navbar-nav .nav-link.nav-link-auth {
     color: white;
     float: none;

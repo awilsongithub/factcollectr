@@ -14,6 +14,10 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './App';
 
+/**
+ * THIS IS WHERE WE INSERT OUR APP INTO INDEX.html
+ * AT DIV ID='ROOT'
+ */
 ReactDOM.render(
   <App />,
   document.getElementById('root')

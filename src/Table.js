@@ -6,16 +6,12 @@ var Table = Reactable.Table;
 var Thead = Reactable.Thead;
 var Th = Reactable.Th;
 
-// OUR DATA IS AN ARRAY OF THESE OBJS
-// id: s,
-// category: allScores[s].category,
-// date: allScores[s].date,
-// decimal: allScores[s].decimal,
-// percentString: allScores[s].percentString,
-// time: allScores[s].time,
-// user: allScores[s].user
-
-
+/**
+ * SCORESTABLE USES Reactable: https://github.com/glittershark/reactable
+ * TO CREATE A SORTABLE, SEARCHABLE TABLE WITH CUSTOM
+ * DATA AND COLUMN, HEADERS TAKEN FROM A SPECIFIED DATA SOURCE
+ * IT PROVIDES LOTS OF OTHER OPTIONS WE CAN CONFIGURE 
+ */
 class ScoresTable extends React.Component {
 
   constructor(props){
@@ -27,7 +23,6 @@ class ScoresTable extends React.Component {
   componentDidMount() {
     const el = document.getElementsByClassName('reactable-filter-input')[0];
     el.setAttribute('placeholder', 'search scores');
-    // el.focus(); // autofocus search input 
   }
 
   renderTable() {
@@ -35,7 +30,7 @@ class ScoresTable extends React.Component {
       <div className='table-hall-of-fame'>
         <Table
           className='table'
-          filterable={['category', 'user']}
+          filterable={['category', 'userName']}
           noDataText="No matching records found"
           itemsPerPage={100}
           currentPage={0}

@@ -1,6 +1,9 @@
 import firebase from 'firebase';
 
-// EXPOSING API KEY PER THIS POST
+// This is the configuration provided by firebase
+// we are using firebase realtime database 
+// we are also using auth with google
+// I AM EXPOSING THE API KEY FOR NOW PER THIS POST:
 // https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
 const config = {
   apiKey: "AIzaSyBnbP3WZssMHCMkDVz6_RV904XF3UGrwes",
