@@ -128,9 +128,14 @@ class App extends Component {
   }
 
   saveScore = quizScore => {
-    console.log('called saveScore', quizScore);
-    const scoresRef = firebase.database().ref('scores');
-    scoresRef.push(quizScore);
+    // console.log('called saveScore', quizScore);
+    if (this.state.user) {
+      const scoresRef = firebase.database().ref('scores');
+      scoresRef.push(quizScore);
+    } else {
+      alert('please Log In in order to save this score.');
+      this.login();
+    }
   }
 
   handleCategorySelection = (categoryObj) => {

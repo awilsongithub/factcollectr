@@ -11,9 +11,13 @@ const Score = props => {
   // TODO save as number of seconds? or usable format? use moment?
   quizScore.time = props.currentQuiz.time;
   quizScore.date = 'fake date'
-  quizScore.userName = props.user.displayName;
-  quizScore.userEmail = props.user.email;
-  quizScore.userPhotoURL = props.user.photoURL;
+
+  if (props.user) {
+    quizScore.userName = props.user.displayName;
+    quizScore.userEmail = props.user.email;
+    quizScore.userPhotoURL = props.user.photoURL;
+  }
+
   console.log('quizScore', quizScore);
 
   return (
