@@ -8,7 +8,7 @@
 git clone https://github.com/awilsongithub/factcollectr.git
 cd factcollectr
 npm install
-npm start
+npm start (use master branch)
 ```
 - In your default browser, navigate to http://localhost:3000
 - FactCollectr should load

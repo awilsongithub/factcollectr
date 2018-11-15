@@ -14,12 +14,15 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.incrementTimer, 1000)
+    this.myInterval();
   }
 
-  // saves resources
   componentWillUnmount() {
-    clearInterval(this.incrementTimer)
+    clearInterval(this.myInterval);
+  }
+
+  myInterval = () => {
+    setInterval(this.incrementTimer, 1000);
   }
 
   incrementTimer = () => {
@@ -40,12 +43,10 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <div className='d-flex justify-content-center'>
-        <span>
-          <span>Time: </span>
-          {this.state.timer.minutes + ':' + this.state.timer.seconds}
-        </span>
-      </div>
+      <span>
+        <span>Time: </span>
+        {this.state.timer.minutes + ':' + this.state.timer.seconds}
+      </span>
     )
   }
 

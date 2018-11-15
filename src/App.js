@@ -128,14 +128,10 @@ class App extends Component {
   }
 
   saveScore = quizScore => {
-    quizScore.anotherprop = 'added later';
     console.log('called saveScore', quizScore);
-    // 'scores' space in db is where we want this stored
     const scoresRef = firebase.database().ref('scores');
-    // send object for storage
     scoresRef.push(quizScore);
   }
-
 
   handleCategorySelection = (categoryObj) => {
     this.setState({
@@ -269,6 +265,7 @@ class App extends Component {
                 questions={this.state.questions}
                 handleAnswerSubmission={this.handleAnswerSubmission}
                 saveScore={this.saveScore}
+                user={this.state.user}
               />}
             />
 

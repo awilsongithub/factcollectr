@@ -25,20 +25,31 @@ class QuizScreen extends React.Component {
           currentQuiz={this.props.currentQuiz}
           questions={this.props.questions}
           saveScore={this.props.saveScore}
+          user={this.props.user}
         />
       )
     } else {
       return (
         <div>
           <div className='stats'>
-            <div className='text-left'><span>Category: </span>{this.props.currentCategory}</div>
+
+            <div className='text-left'>
+              <span>Category: </span>
+              {this.props.currentCategory}
+            </div>
+
             <CurrentScore
               currentScore={this.props.currentQuiz}
               currentCategory='General'
               currentTime='1:42'
             />
-            <div className='text-right'>Time: TODO</div>
+
+            <div className='text-right'>
+              <Timer />
+            </div>
+
           </div>
+          
           <Carousel
             questions={this.props.questions}
             handleAnswerSubmission={this.props.handleAnswerSubmission}
@@ -58,7 +69,8 @@ QuizScreen.propTypes = {
   currentTime: PropTypes.string.isRequired,
   questions: PropTypes.array.isRequired,
   handleAnswerSubmission: PropTypes.func.isRequired,
-  saveScore: PropTypes.func.isRequired
+  saveScore: PropTypes.func.isRequired,
+  // user: PropTypes.object.isRequired,
 }
 
 export default QuizScreen;

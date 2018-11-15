@@ -19,47 +19,35 @@ class HallOfFame extends React.Component {
     scoresRef.on('value', (snapshot) => {
       console.log('db scores value change', snapshot.val());
       let allScores = snapshot.val();
-      let newState = [];
+      let newAllScores = [];
       for (let s in allScores) {
         // NOTE: we need to push on one prop at a time like this
-        newState.push({
+        newAllScores.push({
           id: s,
           category: allScores[s].category,
           date: allScores[s].date,
           decimal: allScores[s].decimal,
           percentString: allScores[s].percentString,
           time: allScores[s].time,
-          user: allScores[s].user
+          userName: allScores[s].userName,
+          userEmail: allScores[s].userEmail,
+          userName: allScores[s].userName,
         })
       }
       this.setState({
-        allScores: newState
+        allScores: newAllScores
       });
 
     });
   }
-  // PROPS TO RENDER ===========================
-  // id: s,
-  // category: allScores[s].category,
-  // date: allScores[s].date,
-  // decimal: allScores[s].decimal,
-  // percentString: allScores[s].percentString,
-  // time: allScores[s].time,
-  // user: allScores[s].user
-  //==============================================
 
   render() {
     return (
       <div className='hall-of-fame'>
         <h2>Hall of Fame</h2>
-
         <Table
           allScores={this.state.allScores}
         />
-
-
-
-
       </div>
     )
   }
@@ -70,15 +58,3 @@ class HallOfFame extends React.Component {
 // }
 
 export default HallOfFame;
-
-
-// <ul>
-//   {this.state.allScores.map((item) => {
-//     return (
-//       <li key={item.category}>
-//         <h3></h3>
-//         <p>Category: {item.category} score: {item.percentString}, {item.decimal}</p>
-//       </li>
-//     )
-//   })}
-// </ul>

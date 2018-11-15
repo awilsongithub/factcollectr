@@ -27,20 +27,8 @@ class ScoresTable extends React.Component {
   componentDidMount() {
     const el = document.getElementsByClassName('reactable-filter-input')[0];
     el.setAttribute('placeholder', 'search scores');
-    el.focus();
+    // el.focus(); // autofocus search input 
   }
-
-  // tableData = {};
-  //
-  // setTableData = () => {
-  //   let s = this.props.allScores;
-  //   this.tableData.user = s.user;
-  //   this.tableData.score = s.percentString;
-  //   this.tableData.category = s.category;
-  //   this.tableData.date = s.date;
-  // }
-  // setTableData();
-
 
   renderTable() {
     return (
@@ -54,25 +42,14 @@ class ScoresTable extends React.Component {
           sortable={true}
           data={this.props.allScores}
           columns={[
-            {key: 'user', label: 'user'},
+            {key: 'userName', label: 'user'},
             {key: 'category', label: 'category'},
             {key: 'percentString', label: 'score'},
             {key: 'date', label: 'date'}
           ]}
         >
-          // TODO NO DATA SHOWS UP WHEN I ADD THEAD ELEMENT
-          // <Thead>
-          //   <Th column="name">ID</Th>
-          //   <Th column="leader">Category</Th>
-          //   <Th column="assignment">Date</Th>
-          //   <Th column="members">Decimal</Th>
-          //   <Th column="leader">Score</Th>
-          //   <Th column="assignment">Time</Th>
-          //   <Th column="members">Player</Th>
-          // </Thead>
         </Table>
       </div>
-
     )
   }
 
