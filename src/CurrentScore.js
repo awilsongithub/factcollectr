@@ -6,7 +6,7 @@ const CurrentScore = props => {
   return (
     <div className='text-center'>
       <span>
-        <span>Points: </span>
+        <span>Score: </span>
         {props.currentScore.correct}
       </span>
     </div>

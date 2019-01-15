@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 button {
   margin-right: 5px;
 }
-.card button {
+.card .btn {
   width: 100%;
   margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@ button {
 .btn.btn-correct-animate, .btn.btn-correct-animate:hover {
   background: #0EBF00;
   animation-name: flash;
-  animation-duration: 2s;
+  animation-duration: 1.8s;
   -webkit-animation-name: flash;
   -webkit-animation-duration: 2s;
 }
@@ -113,11 +113,9 @@ button {
 .stats {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 0;
   color: white;
-}
-.stats > div {
-  width: 33%;
+  font-size: 32px;
 }
 [class^="flaticon-"]:before,
 [class*=" flaticon-"]:before,
@@ -182,6 +180,10 @@ h5.card-title {
 .hall-of-fame h2 {
   color: white;
 }
+.hall-of-fame {
+  max-width: 600px;
+  margin: auto;
+}
 .reactable-pagination tr {
   text-align: center;
 }
@@ -215,6 +217,7 @@ h5.card-title {
   display: none;
 }
 
+
 @media screen and (max-width: 576px) {
   .nav-right {
     margin-left: unset;
@@ -223,4 +226,31 @@ h5.card-title {
     color: white;
     float: none;
   }
+}
+
+/* smaller than ipad portrait */
+@media screen and (max-width: 767px) {
+  .hidden-sm-down {
+    display: none;
+  }
+}
+
+/* ipad portrait and up */
+@media screen and (min-width: 768px) {
+  .hidden-md-up {
+    display: none;
+  }
+}
+
+/* addd sort icons to reactable */
+th.reactable-header-sortable:after {
+  content: '\2191\2193';
+  font-size: 14px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.hero-text {
+  font-size: 55px;
+  font-weight: bold;
+  color: #f0b64c;
 }

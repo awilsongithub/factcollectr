@@ -10,7 +10,7 @@ var Th = Reactable.Th;
  * SCORESTABLE USES Reactable: https://github.com/glittershark/reactable
  * TO CREATE A SORTABLE, SEARCHABLE TABLE WITH CUSTOM
  * DATA AND COLUMN, HEADERS TAKEN FROM A SPECIFIED DATA SOURCE
- * IT PROVIDES LOTS OF OTHER OPTIONS WE CAN CONFIGURE 
+ * IT PROVIDES LOTS OF OTHER OPTIONS WE CAN CONFIGURE
  */
 class ScoresTable extends React.Component {
 
@@ -35,12 +35,13 @@ class ScoresTable extends React.Component {
           itemsPerPage={100}
           currentPage={0}
           sortable={true}
+          defaultSort={{column: 'percentString', direction: 'desc'}}
           data={this.props.allScores}
           columns={[
-            {key: 'userName', label: 'user'},
-            {key: 'category', label: 'category'},
-            {key: 'percentString', label: 'score'},
-            {key: 'date', label: 'date'}
+            {key: 'percentString', label: 'Score'},
+            {key: 'userName', label: 'Player'},
+            {key: 'category', label: 'Quiz Category'},
+            {key: 'date', label: 'Date'}
           ]}
         >
         </Table>
@@ -48,6 +49,8 @@ class ScoresTable extends React.Component {
     )
   }
 
+  // TODO: add sort icons to headers:
+  // <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
   render() {
     return (
       <div>

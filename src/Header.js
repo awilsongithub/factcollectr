@@ -34,10 +34,10 @@ const Header = props => {
             { props.user ?
               <div className='nav-right'>
                 <span className='user-profile d-none d-sm-inline'>
-                  <img src={props.user.photoURL} />
+                  <img src={props.user.photoURL} alt=''/>
                   <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
                 </span>
-                <a onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
+                <a href='' onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
               </div>
               :
               <a onClick={props.login} className='nav-link-auth nav-item nav-link'>Log In</a>

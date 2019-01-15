@@ -21,6 +21,7 @@ class StartScreen extends React.Component {
   render() {
     return (
       <div>
+        <h2 className='hero-text'>LET THE QUEST BEGIN</h2>
         <h2 className='text-white'>Choose Category to Start Quiz</h2>
         <div className="row card-deck">
 

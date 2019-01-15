@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import QuestionList from './QuestionList';
 import CurrentScore from './CurrentScore';
 import Timer from './Timer';
 import Carousel from './Carousel';
@@ -17,7 +16,7 @@ class QuizScreen extends React.Component {
 
   constructor(props){
     super();
-    this.state = {}
+    this.state = { }
   }
 
   render() {
@@ -36,8 +35,15 @@ class QuizScreen extends React.Component {
           <div className='stats'>
 
             <div className='text-left'>
-              <span>Category: </span>
-              {this.props.currentCategory}
+              
+              {/* on mobile show category icon instead of name */}
+              <span className='hidden-md-up'>
+                <i className={`flaticon-${this.props.categories[2].icon}`}></i>
+              </span>
+
+              <span className='hidden-sm-down'>
+                {this.props.currentCategory}
+              </span>
             </div>
 
             <CurrentScore
@@ -67,6 +73,7 @@ class QuizScreen extends React.Component {
 QuizScreen.propTypes = {
   showScore: PropTypes.bool.isRequired,
   currentQuiz: PropTypes.object.isRequired,
+  categories: PropTypes.array.isRequired,
   currentCategory: PropTypes.string.isRequired,
   currentTime: PropTypes.string.isRequired,
   questions: PropTypes.array.isRequired,

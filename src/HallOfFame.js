@@ -53,7 +53,7 @@ class HallOfFame extends React.Component {
   render() {
     return (
       <div className='hall-of-fame'>
-        <h2 className='d-inline-block'>Hall of Fame</h2>
+        <h2 className='d-inline-block'>Hall of Fame (Scores)</h2>
         <span className='alert alert-success' role='alert'>New score saved to Hall of Fame</span>
         <Table allScores={this.state.allScores} />
       </div>

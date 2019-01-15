@@ -1,0 +1,7 @@
+// override terminal colors per https://stackoverflow.com/questions/42307949/color-theme-for-vs-code-integrated-terminal
+{
+    "workbench.colorCustomizations": {
+        "terminal.foreground": "#00FD61",
+        "terminal.background": "#383737"
+    }
+}

@@ -53,3 +53,4 @@ I used the [Open Trivia Database](https://opentdb.com) API. Users can fetch ques
 - UI inspired by [Trivia Plaza](https://www.triviaplaza.com/)
 - Sortable, searchable tables with [Reactable](https://github.com/glittershark/reactable)
 - Icons from [Flaticon](https://www.flaticon.com/)
+

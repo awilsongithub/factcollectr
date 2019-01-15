@@ -148,13 +148,13 @@ class App extends Component {
       });
   }
 
-  // provied green and/or red animated feedback to user
+  // provide green and/or red animated feedback to user
   provideSubmissionFeedback = (target, guess, indexOfCorrect) => {
     const userGuessBtn = $(target);
     const allBtns = userGuessBtn.siblings().addBack();
     const correctAnswerBtn = allBtns.get(indexOfCorrect);
     if(guess === 'correct'){
-      userGuessBtn.addClass('btn-correct');
+      userGuessBtn.addClass('btn-correct-animate');
     } else {
       userGuessBtn.addClass('btn-wrong');
         $(correctAnswerBtn).addClass('btn-correct-animate');
@@ -214,7 +214,7 @@ class App extends Component {
      } else {
         setTimeout(function(){
           $('.carousel').carousel('next');
-        }, 2500)
+        }, 2000)
      }
   }
 
@@ -247,6 +247,7 @@ class App extends Component {
             <Route path="/play" render={() =>   <QuizScreen
                 showScore={this.state.showScore}
                 currentQuiz={this.state.currentQuiz}
+                categories={this.categories}
                 currentCategory={this.state.currentQuiz.category}
                 currentTime='1:42'
                 questions={this.state.questions}
