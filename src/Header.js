@@ -27,22 +27,27 @@ const Header = props => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
 
-            <NavLink className="nav-item nav-link" exact to="/">Home</NavLink>
+            {/* MENU SELECTIONS CLOSE MENU */}
+            <span data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
 
-            <NavLink className="nav-item nav-link" to="/hall">Hall of Fame</NavLink>
+              <NavLink className="nav-item nav-link" exact to="/">Home</NavLink>
 
-            { props.user ?
-              <div className='nav-right'>
-                <span className='user-profile d-none d-sm-inline'>
-                  <img src={props.user.photoURL} alt=''/>
-                  <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
-                </span>
-                <a href='' onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
-              </div>
-              :
-              <a onClick={props.login} className='nav-link-auth nav-item nav-link'>Log In</a>
-            }
+              <NavLink className="nav-item nav-link" to="/hall">Hall of Fame</NavLink>
 
+              {props.user ?
+                <div className='nav-right'>
+                  <span className='user-profile d-none d-sm-inline'>
+                    <img src={props.user.photoURL} alt='' />
+                    <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
+                  </span>
+                  <a href='' onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
+                </div>
+                :
+                <a onClick={props.login} className='nav-link-auth nav-item nav-link'>Log In</a>
+              }
+
+            </span>
+       
           </div>
 
         </div>

@@ -40,7 +40,7 @@ class ScoresTable extends React.Component {
           columns={[
             {key: 'percentString', label: 'Score'},
             {key: 'userName', label: 'Player'},
-            {key: 'category', label: 'Quiz Category'},
+            {key: 'category', label: 'Category'},
             {key: 'date', label: 'Date'}
           ]}
         >

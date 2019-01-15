@@ -233,9 +233,12 @@ h5.card-title {
   .hidden-sm-down {
     display: none;
   }
-  body {
-    background: orange;
+  /* hide 4th column */
+  .reactable-th-date,
+  .reactable-data td:nth-child(3) {
+    display: none;
   }
+
 }
 
 /* ipad portrait and up */
@@ -252,6 +255,7 @@ th.reactable-header-sortable:after {
   padding-left: 10px;
   padding-bottom: 5px;
 }
+
 .hero-text {
   font-size: 55px;
   font-weight: bold;
