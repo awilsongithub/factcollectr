@@ -233,6 +233,9 @@ h5.card-title {
   .hidden-sm-down {
     display: none;
   }
+  body {
+    background: orange;
+  }
 }
 
 /* ipad portrait and up */
