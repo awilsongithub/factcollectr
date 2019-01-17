@@ -79,8 +79,7 @@ QuizScreen.propTypes = {
   currentTime: PropTypes.string.isRequired,
   questions: PropTypes.array.isRequired,
   handleAnswerSubmission: PropTypes.func.isRequired,
-  saveScore: PropTypes.func.isRequired,
-  // user: PropTypes.object.isRequired,
+  saveScore: PropTypes.func.isRequired
 }
 
 export default QuizScreen;

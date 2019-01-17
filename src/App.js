@@ -78,6 +78,12 @@ class App extends Component {
       .then((result) => {
         const user = result.user;
         this.setState({ user });
+
+        const loginSuccessAlert = $('.alert-success');
+        loginSuccessAlert.show(500);
+        setTimeout(function () {
+          loginSuccessAlert.hide(500);
+        }, 3000);
       });
   }
 
@@ -235,6 +241,8 @@ class App extends Component {
             />}
           />
 
+          <span className='alert alert-success' role='alert'>Login successful</span>
+    
           <Switch>
 
             <Route exact path="/" render={() => <StartScreen

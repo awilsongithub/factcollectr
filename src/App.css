@@ -214,7 +214,7 @@ h5.card-title {
   margin-right:  10px;
   margin-left: 10px;
 }
-.hall-of-fame .alert-success {
+.alert-success {
   color: white;
   background-color: #0EBF00;
   border: none;
@@ -240,7 +240,7 @@ h5.card-title {
   }
   /* hide 4th column */
   .reactable-th-date,
-  .reactable-data td:nth-child(3) {
+  .reactable-data td:nth-child(4) {
     display: none;
   }
 
