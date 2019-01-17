@@ -220,6 +220,8 @@ h5.card-title {
   border: none;
   float: right;
   display: none;
+  margin-left: 15px;
+  white-space: pre;
 }
 
 

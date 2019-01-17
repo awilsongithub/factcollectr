@@ -41,7 +41,7 @@ class HallOfFame extends React.Component {
         allScores: newAllScores
       });
 
-      const newScoreAlert = $('.alert-success');
+      const newScoreAlert = $('.new-score-alert.alert-success');
       newScoreAlert.show(500);
       setTimeout(function(){
         newScoreAlert.hide(500);
@@ -54,7 +54,7 @@ class HallOfFame extends React.Component {
     return (
       <div className='hall-of-fame'>
         <h2 className='d-inline-block'>Hall of Fame (Scores)</h2>
-        <span className='alert alert-success' role='alert'>New score saved to Hall of Fame</span>
+        <span className='new-score-alert alert alert-success' role='alert'>New score saved</span>
         <Table allScores={this.state.allScores} />
       </div>
     )

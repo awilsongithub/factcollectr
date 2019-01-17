@@ -79,7 +79,7 @@ class App extends Component {
         const user = result.user;
         this.setState({ user });
 
-        const loginSuccessAlert = $('.alert-success');
+        const loginSuccessAlert = $('.login-success-alert.alert-success');
         loginSuccessAlert.show(500);
         setTimeout(function () {
           loginSuccessAlert.hide(500);
@@ -241,7 +241,7 @@ class App extends Component {
             />}
           />
 
-          <span className='alert alert-success' role='alert'>Login successful</span>
+          <span className='login-success-alert alert alert-success' role='alert'>Login successful</span>
     
           <Switch>
 
