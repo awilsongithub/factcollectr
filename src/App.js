@@ -117,6 +117,7 @@ class App extends Component {
       currentQuiz: {
         ...this.state.currentQuiz,
         category: categoryObj.name,
+        icon: categoryObj.icon,
         answered: 0,
         correct: 0,
         incorrect: 0,
@@ -247,8 +248,8 @@ class App extends Component {
             <Route path="/play" render={() =>   <QuizScreen
                 showScore={this.state.showScore}
                 currentQuiz={this.state.currentQuiz}
-                categories={this.categories}
                 currentCategory={this.state.currentQuiz.category}
+                icon={this.state.currentQuiz.icon}
                 currentTime='1:42'
                 questions={this.state.questions}
                 handleAnswerSubmission={this.handleAnswerSubmission}

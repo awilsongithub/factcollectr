@@ -29,13 +29,16 @@ const Header = props => {
 
             {/* MENU SELECTIONS CLOSE MENU */}
             <span data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
-
               <NavLink className="nav-item nav-link" exact to="/">Home</NavLink>
+            </span>
 
+            <span data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
               <NavLink className="nav-item nav-link" to="/hall">Hall of Fame</NavLink>
+            </span>
 
+            <span className='nav-right' data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
               {props.user ?
-                <div className='nav-right'>
+                <div>
                   <span className='user-profile d-none d-sm-inline'>
                     <img src={props.user.photoURL} alt='' />
                     <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
@@ -45,9 +48,8 @@ const Header = props => {
                 :
                 <a onClick={props.login} className='nav-link-auth nav-item nav-link'>Log In</a>
               }
-
             </span>
-       
+
           </div>
 
         </div>

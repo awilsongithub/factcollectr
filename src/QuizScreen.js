@@ -16,9 +16,10 @@ class QuizScreen extends React.Component {
 
   constructor(props){
     super();
-    this.state = { }
+    this.state = {
+    }
   }
-
+ 
   render() {
     if(this.props.showScore === true) {
       return (
@@ -38,7 +39,7 @@ class QuizScreen extends React.Component {
               
               {/* on mobile show category icon instead of name */}
               <span className='hidden-md-up'>
-                <i className={`flaticon-${this.props.categories[2].icon}`}></i>
+                <i className={`flaticon-${this.props.icon}`}></i>
               </span>
 
               <span className='hidden-sm-down'>
@@ -73,8 +74,8 @@ class QuizScreen extends React.Component {
 QuizScreen.propTypes = {
   showScore: PropTypes.bool.isRequired,
   currentQuiz: PropTypes.object.isRequired,
-  categories: PropTypes.array.isRequired,
   currentCategory: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   currentTime: PropTypes.string.isRequired,
   questions: PropTypes.array.isRequired,
   handleAnswerSubmission: PropTypes.func.isRequired,
