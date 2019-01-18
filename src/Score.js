@@ -55,7 +55,6 @@ const Score = props => {
               <h2 className="card-title">
                 {messageTitle}
               </h2>
-                <p>You nailed it! The questions are tough. Using a search engine is allowed.</p>
             </div>
           </div>
 

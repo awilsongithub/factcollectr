@@ -63,6 +63,7 @@ class App extends Component {
         this.setState({ user });
       }
     });
+    this.getAndSetAllScores();
   }
 
   /**===============================================
@@ -78,12 +79,7 @@ class App extends Component {
       .then((result) => {
         const user = result.user;
         this.setState({ user });
-
-        const loginSuccessAlert = $('.login-success-alert.alert-success');
-        loginSuccessAlert.show(500);
-        setTimeout(function () {
-          loginSuccessAlert.hide(500);
-        }, 3000);
+        this.alertLoginSuccess(); 
       });
   }
 
@@ -94,15 +90,58 @@ class App extends Component {
       });
   }
 
-  // Save scores to firebase realtime database
+  alertLoginSuccess = () => {
+    let alert = $('.login-success-alert');
+    alert.show(500);
+    setTimeout(function () {
+      alert.hide(500);
+    }, 3000);
+  }
+
+  getAndSetAllScores = () => {
+    const scoresRef = firebase.database().ref('scores');
+    scoresRef.once('value', (snapshot) => {
+      let t = snapshot.val();
+      console.log('got scores from db', t);
+      let newAllScores = [];
+      for (let s in t) {
+        newAllScores.push({
+          id:             s,
+          category:       t[s].category,
+          date:           t[s].date,
+          decimal:        t[s].decimal,
+          percentString:  t[s].percentString,
+          time:           t[s].time,
+          userName:       t[s].userName,
+          userEmail:      t[s].userEmail,
+          userName:       t[s].userName,
+        })
+      }
+      this.setState({
+        allScores: newAllScores
+      });
+    })
+  }
+
+  // Save scores to firebase 
   saveScore = quizScore => {
-    if (this.state.user) {
+    if (!this.state.user) {
+      alert('please Log before saving.');
+      this.login();
+    } else {
       const scoresRef = firebase.database().ref('scores');
       scoresRef.push(quizScore);
-    } else {
-      alert('please Log In in order to save this score.');
-      this.login();
+      this.getAndSetAllScores(); 
+      this.alertScoreSaved(); 
     }
+  } 
+
+  alertScoreSaved = () => {
+    let alert = $('.new-score-alert');
+    alert.show(500);
+    setTimeout(function () {
+      alert.hide(500);
+    }, 3000);
   }
 
   // handle user click on a quiz category
@@ -241,7 +280,9 @@ class App extends Component {
             />}
           />
 
+          {/* ALERTS */}
           <span className='login-success-alert alert alert-success' role='alert'>Login successful</span>
+          <span className='new-score-alert alert alert-success' role='alert'>New score saved</span>
     
           <Switch>
 
@@ -267,8 +308,9 @@ class App extends Component {
             />
 
             <Route path='/hall' render={() => <HallOfFame
-              scores={this.scores}
-            />} />
+              allScores={this.state.allScores}
+            />} 
+            />
 
           </Switch>
 

@@ -16,7 +16,7 @@ const Header = props => {
       <div className='container'>
 
         {/* LOGO HOME LINK */}
-        <NavLink className="navbar-brand" exact to="/">FactCollectr</NavLink>
+        <NavLink className="navbar-brand" exact to="/">Tough Questions</NavLink>
 
         {/* HAMBURGER MENU  */}
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@ const Header = props => {
             </span>
 
             <span data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
-              <NavLink className="nav-item nav-link" to="/hall">Hall of Fame</NavLink>
+              <NavLink className="nav-item nav-link" to="/hall">Top Scores</NavLink>
             </span>
 
             <span className='nav-right' data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
