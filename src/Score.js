@@ -60,19 +60,25 @@ const Score = props => {
 
           <div className='row'>
 
-            <div className='col-xs-12 col-sm-6'>
-              <p>Score: {quizScore.percentString}</p>
-              <p>Time: TODO</p>
-              <p>Category: {quizScore.category}</p>
+            <div className='col-xs-12 col-sm-6 score-stats'>
+              <div className='d-flex justify-content-between'>
+                <span class='text-left'>Score:</span>
+                <span class='text-right'>{quizScore.percentString}</span>
+              </div>
+
+              <div className='d-flex justify-content-between'>
+                <span class='text-left'>Time:</span>
+                <span class='text-right'>2:22</span>
+              </div>
             </div>
 
             <div className='col-xs-12 col-sm-6'>
               {!props.user ?
-                <button className="btn btn-primary mb-2" onClick={authToSaveAlert}>Save to Hall of Fame</button>
+                <button className="btn btn-lg mb-3" onClick={authToSaveAlert}>Save to Hall of Fame</button>
                 :
-                <NavLink to='/hall' className="btn btn-primary mb-2" onClick={(e) => props.saveScore(quizScore, e)} >Save to Hall of Fame</NavLink>
+                <NavLink to='/hall' className="btn btn-lg mb-3" onClick={(e) => props.saveScore(quizScore, e)} >Save to Hall of Fame</NavLink>
               }
-              <NavLink className="btn btn-primary" to='/'>Take Another Quiz</NavLink>
+              <NavLink className="btn btn-lg" to='/'>Take Another Quiz</NavLink>
             </div>
     
           </div>
