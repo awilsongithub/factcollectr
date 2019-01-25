@@ -32,7 +32,7 @@ class QuizScreen extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='max-width-600'>
           <div className='stats'>
 
             <div className='text-left'>

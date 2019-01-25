@@ -13,8 +13,11 @@ class HallOfFame extends React.Component {
 
   render() {
     return (
-      <div className='hall-of-fame'>
-        <h2 className='d-inline-block'>Top Scores</h2>
+      <div className='hall-of-fame max-width-600'>
+        <h2 className='flex-space-between'>
+          <span>Top Scores</span>
+          <i className="flaticon-best"></i>
+        </h2>
         <Table allScores={this.props.allScores} />
       </div>
     )

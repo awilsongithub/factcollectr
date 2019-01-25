@@ -18,19 +18,27 @@ const Score = props => {
   quizScore.category = props.currentQuiz.category;
   // TODO save as number of seconds? or usable format? use moment?
   quizScore.time = props.currentQuiz.time;
-  quizScore.date = 'fake date';
+  quizScore.date = new Date().toLocaleDateString('en-US');
 
   // set message
-  var messageTitle;
+  var message = {};
   var c = props.currentQuiz.correct;
   if (c === 10) { 
-    messageTitle = 'Polymathtacular!';
+    message.title = 'Polymathtacular!';
+    message.subtitle = 'Perfect score. You either used google or could not be smarter';
+    message.icon = 'joyful';
   } else if (c >= 8) {
-    messageTitle = 'Factastic! Use the web while you play to go for a perfect score.';
+    message.title = 'Factastic!';
+    message.subtitle = 'Use the web while you play to go for a perfect score.';
+    message.icon = 'happy';
   } else if (c < 8 && c >= 5){
-    messageTitle = 'Nice Job! Search engines are a good bet for boosting your score.';
+    message.title = 'Nice Job!';
+    message.subtitle = ' Search engines are a good bet for boosting your score.';
+    message.icon = 'sceptic';
   } else {
-    messageTitle = 'Tough Luck. The questions are super hard but Google is your friend.'
+    message.title = 'Tough Luck.';
+    message.subtitle = 'Why does this API have such tough questions?';
+    message.icon = 'angry';
   }
 
   if (props.user) {
@@ -46,45 +54,40 @@ const Score = props => {
   }
 
   return (
-    <div className='quiz-score-card'>
-      <div className="card" >
-        <div className="card-body">
+  
+    <div class="jumbotron scorecard">
+      <div class="container">
 
-          <div className='row'>
-            <div className='col-12'>
-              <h2 className="card-title">
-                {messageTitle}
-              </h2>
-            </div>
-          </div>
+        <h1 className='flex-space-between'>
+          <span>{message.title}</span>
+          <i className={`flaticon-${message.icon}`}></i>
+        </h1>
+        <p>{message.subtitle}</p>
 
-          <div className='row'>
+        <table className='table'>
+            <tr>
+              <td>Score:</td>
+              <td>{quizScore.percentString}</td>
+            </tr>
+          <tr>
+            <td>Time:</td>
+            <td>9:99</td>
+          </tr>
+        </table>
+        
+        <p>
+          {!props.user ?
+            <a className="btn btn-primary btn-lg bg-purple" onClick={authToSaveAlert}>Save score</a>
+            :
+            <NavLink to='/hall' className="btn btn-primary btn-lg bg-purple" onClick={(e) => props.saveScore(quizScore, e)} >Save score</NavLink>
+          }
+          <NavLink className="btn btn-primary btn-lg bg-grey" to='/'>Take Another Quiz</NavLink>
+        </p>
 
-            <div className='col-xs-12 col-sm-6 score-stats'>
-              <div className='d-flex justify-content-between'>
-                <span class='text-left'>Score:</span>
-                <span class='text-right'>{quizScore.percentString}</span>
-              </div>
-
-              <div className='d-flex justify-content-between'>
-                <span class='text-left'>Time:</span>
-                <span class='text-right'>2:22</span>
-              </div>
-            </div>
-
-            <div className='col-xs-12 col-sm-6'>
-              {!props.user ?
-                <button className="btn btn-lg mb-3" onClick={authToSaveAlert}>Save to Hall of Fame</button>
-                :
-                <NavLink to='/hall' className="btn btn-lg mb-3" onClick={(e) => props.saveScore(quizScore, e)} >Save to Hall of Fame</NavLink>
-              }
-              <NavLink className="btn btn-lg" to='/'>Take Another Quiz</NavLink>
-            </div>
-    
-          </div>
-        </div>
       </div>
     </div>
+
+
   )
 }
 

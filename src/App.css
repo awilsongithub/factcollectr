@@ -7,6 +7,7 @@ body {
   background-size: cover;
   height: 100vh;
 }
+
 .navbar {
   background: #291f29;
   min-height: 75px;
@@ -123,6 +124,10 @@ button {
   color: white;
   font-size: 32px;
 }
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
 [class^="flaticon-"]:before,
 [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after,
@@ -156,6 +161,43 @@ h5.card-title {
   padding-left: 5px;
   padding-right: 5px;
 }
+.scorecard {
+  max-width: 400px;
+  margin: auto;
+}
+.scorecard tr:last-child {
+  border-bottom: 1px solid rgba(158, 158, 158, 0.15);
+}
+.scorecard tr td:last-child {
+  text-align: right;
+}
+.scorecard .btn-lg {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.scorecard i:before,
+.hall-of-fame i:before {
+  font-size: 36px;
+  margin-right: 0;
+}
+.bg-purple {
+  background-color: #6b566b;
+  border-color: #6b566b;
+}
+.bg-purple:hover {
+  background-color: #7d5f7d;
+  border-color: #7d5f7d;
+}
+.bg-grey, .bg-grey:not(:disabled):not(.disabled).active {
+  background-color: #ada8ad;
+  border-color: #ada8ad;
+}
+.bg-grey:hover, .bg-grey:not(:disabled):not(.disabled).active:hover {
+  background-color:#c5bec5;
+  border-color: #c5bec5;
+}
+
+
 .table-hall-of-fame .table {
   color: black;
   border-radius: 5px;
@@ -183,10 +225,21 @@ h5.card-title {
   -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+/* button color options  
+#6b566b medium purple greay
+#ada8ad light grey with purple tones
+
+*/
+
+
+
+
+
 .hall-of-fame h2 {
   color: white;
 }
-.hall-of-fame {
+.max-width-600 {
   max-width: 600px;
   margin: auto;
 }
@@ -249,6 +302,7 @@ h5.card-title {
     color: white;
     float: none;
   }
+
 }
 
 /* smaller than ipad portrait */
