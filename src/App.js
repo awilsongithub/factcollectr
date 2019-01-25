@@ -218,7 +218,6 @@ class App extends Component {
   }
 
   // reset these each time we come back to StartScreen
-  // and other times?
   // so when start another quiz it doesn't skip ahead to showing Score
   resetShowValues = () => {
     this.setState({
@@ -228,7 +227,7 @@ class App extends Component {
   }
 
   // check user guess against correct
-  // call helper fn to provide provide feedback
+  // call helper fn to provide feedback
   // set value for correct so we can provide user score
   // if this was the final question, show Score
   handleAnswerSubmission = (indexOfGuess, indexOfCorrect, questionNumber, e) => {

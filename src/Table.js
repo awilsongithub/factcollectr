@@ -32,7 +32,8 @@ class ScoresTable extends React.Component {
           className='table'
           filterable={['category', 'userName']}
           noDataText="No matching records found"
-          itemsPerPage={100}
+          itemsPerPage={10}
+          pageButtonLimit={10}
           currentPage={0}
           sortable={true}
           defaultSort={{column: 'percentString', direction: 'desc'}}

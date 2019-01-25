@@ -226,14 +226,35 @@ h5.card-title {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+/* SCORES TABLE PAGINATION */
+.reactable-pagination td {
+  display: table-cell; /* to get border-collapse */
+  text-align:center;
+}
+.reactable-pagination td a {
+  display: inline-block;
+  border-collapse: collapse;
+  min-width: 30px;
+  border: 1px solid #bbb;
+  padding: 5px 10px;
+  color: black;
+}
+.reactable-pagination td a:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.reactable-pagination td a.reactable-next-page {
+  border-radius: 0 4px 4px 0;
+}
+td a.reactable-current-page {
+  background: #bbb;
+  color: white;
+} 
+
+
 /* button color options  
 #6b566b medium purple greay
 #ada8ad light grey with purple tones
-
 */
-
-
-
 
 
 .hall-of-fame h2 {
