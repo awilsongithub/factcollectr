@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import HallOfFame from './HallOfFame';
 
 /**
  * STARTSCREEN RENDERS QUIZ CATEGORIES FROM THE API
@@ -21,28 +22,53 @@ class StartScreen extends React.Component {
   render() {
     return (
       <div>
-        <h2 className='hero-text'>Quiz yourself</h2>
-        {/* <h2 className='text-white'>Choose Category to Start Quiz</h2> */}
-        <div className="row card-deck">
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6'>
 
-          {this.props.categories.map( (cat, i) =>
-            <div className='col-md-6 col-lg-4 col-xl-3'>
-              <Link to='/play'>
-                <div
-                  key={i}
-                  className="card card-btn"
-                  onClick={(e) => this.props.handleCategorySelection(cat, e)}
-                >
-                  <div className="card-body">
-                  <i className={`flaticon-${cat.icon}`}></i>
-                    <h5 className="card-title">{cat.name}</h5>
-                  </div>
+            <h2 className='hero-text'>Quiz yourself</h2>
+            {/* <h2 className='text-white'>Choose Category to Start Quiz</h2> */}
+            <div className="card-deck">
+
+              {this.props.categories.map((cat, i) =>
+                <div className=''>
+                  <Link to='/play'>
+                    <div
+                      key={i}
+                      className="card card-btn"
+                      onClick={(e) => this.props.handleCategorySelection(cat, e)}
+                    >
+                      <div className="card-body">
+                        <i className={`flaticon-${cat.icon}`}></i>
+                        <h5 className="card-title">{cat.name}</h5>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            </div>
-          )}
+              )}
 
+            </div>
+
+
+          </div>
+          <div className='col-xs-12 col-sm-6'>
+            <HallOfFame
+              allScores={this.props.allScores}
+              columns={[
+                { key: 'percentString', label: 'Score' },
+                { key: 'userName', label: 'Player' }
+              ]}
+              maxPaginationBtns={3}
+            />
+
+          </div>
         </div>
+
+
+
+        
+
+
+
       </div>
     )
   }
@@ -52,7 +78,8 @@ StartScreen.propTypes = {
   startQuiz: PropTypes.func.isRequired,
   categories: PropTypes.array.isRequired,
   handleCategorySelection: PropTypes.func.isRequired,
-  resetShowValues: PropTypes.func.isRequired
+  resetShowValues: PropTypes.func.isRequired,
+  allScores: PropTypes.array.isRequired
 }
 
 export default StartScreen;

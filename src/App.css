@@ -1,3 +1,7 @@
+/*******************
+      GENERAL 
+********************/
+
 body {
   /* because of fixed navbar */
   padding-top: 70px;
@@ -7,20 +11,75 @@ body {
   background-size: cover;
   height: 100vh;
 }
-
-.navbar {
-  background: #291f29;
-  min-height: 75px;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
-}
 .App.container {
   padding-top: 15px;
 }
 button {
   margin-right: 5px;
 }
+.main-content {
+  padding-top: 20px;
+}
+
+/*******************
+      NAV
+********************/
+
+.navbar {
+  background: #291f29;
+  min-height: 75px;
+}
+.navbar-nav {
+  width: 100%;
+}
+.navbar-nav .nav-link.nav-link-auth {
+  color: white;
+  float: right;
+}
+.navbar-nav .nav-link.nav-link-auth:hover {
+  color: white;
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+.nav-right {
+  margin-left: auto;
+}
+.user-profile img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right:  10px;
+  margin-left: 10px;
+}
+
+/*******************
+ TYPOGRAPHY & COLORS
+********************/
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+}
+.bg-purple {
+  background-color: #6b566b;
+  border-color: #6b566b;
+}
+.bg-purple:hover {
+  background-color: #7d5f7d;
+  border-color: #7d5f7d;
+}
+.bg-grey, .bg-grey:not(:disabled):not(.disabled).active {
+  background-color: #ada8ad;
+  border-color: #ada8ad;
+}
+.bg-grey:hover, .bg-grey:not(:disabled):not(.disabled).active:hover {
+  background-color:#c5bec5;
+  border-color: #c5bec5;
+}
+
+
+/****************************
+ QUIZ SCREEN / PLAY MODE 
+*****************************/
+
 .card .btn {
   width: 100%;
   margin-bottom: 10px;
@@ -40,6 +99,9 @@ button {
   padding-right: 5px;
   padding-left: 5px;
 }
+.card-deck div {
+    width: 100%;
+}
 .card-deck .card-body {
   padding: .5rem 1.25rem;
 }
@@ -52,6 +114,10 @@ button {
   min-height: 50px;
   cursor: pointer;
 }
+
+/*******************
+ ANSWER BUTTONS AND THEIR ANIMATIONS 
+********************/
 .btn-outline-secondary:hover {
   color: inherit;
 }
@@ -86,13 +152,13 @@ button {
   80% {background-color: inherit; }
   100% {background-color: #0EBF00; }
 }
-.main-content {
-  padding-top: 20px;
-}
+
 .gcse-searchbox {
   border: 2px solid red;
   height: 30px;
 }
+
+
 .carousel-indicators li {
   cursor: initial;
   background-color: lightgrey;
@@ -124,10 +190,11 @@ button {
   color: white;
   font-size: 32px;
 }
-.flex-space-between {
-  display: flex;
-  justify-content: space-between;
-}
+
+
+/*******************
+      ICONS
+********************/
 [class^="flaticon-"]:before,
 [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after,
@@ -136,6 +203,10 @@ button {
   margin-left: 0px;
   margin-right: 10px;
 }
+
+/****************************
+START SCREEN CATEGORY CARDS
+*****************************/
 .card-deck a {
   color: initial;
   text-decoration: none;
@@ -161,6 +232,12 @@ h5.card-title {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+
+/*******************
+    SCORECARD
+********************/
+
 .scorecard {
   max-width: 400px;
   margin: auto;
@@ -180,37 +257,44 @@ h5.card-title {
   font-size: 36px;
   margin-right: 0;
 }
-.bg-purple {
-  background-color: #6b566b;
-  border-color: #6b566b;
-}
-.bg-purple:hover {
-  background-color: #7d5f7d;
-  border-color: #7d5f7d;
-}
-.bg-grey, .bg-grey:not(:disabled):not(.disabled).active {
-  background-color: #ada8ad;
-  border-color: #ada8ad;
-}
-.bg-grey:hover, .bg-grey:not(:disabled):not(.disabled).active:hover {
-  background-color:#c5bec5;
-  border-color: #c5bec5;
-}
 
 
+
+/***************************
+    TOP SCORES/HALL OF FAME    
+****************************/ 
+
+.hall-of-fame {
+  padding-left: 8px;
+}
 .table-hall-of-fame .table {
   color: black;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: rgba(248, 249, 250, .9);
 }
 .table-hall-of-fame thead td {
   border-top: none;
 }
+.table-hall-of-fame thead th,
+.table-hall-of-fame thead td,
+.table-hall-of-fame tbody td
+ {
+  vertical-align: middle;
+  border-bottom: 2px solid #e9ecef;
+  padding: 1rem 1.75rem;
+}
+.table-hall-of-fame thead td {
+    padding: .7rem 1rem;
+}
+.table-hall-of-fame tbody tr {
+  box-shadow: 0 2px 2px lightgrey;
+  border-style: none;
+}
 .reactable-column-header {
   background: #291f29;
   color: white;
 }
-/* add css for class .form-control */
+/* ADD BOOTSTRAP .FORM-CONTROL STYLES TO THIS INPUT */
 .reactable-filter-input {
   width: 100%;
   height: calc(2.25rem + 2px);
@@ -224,6 +308,17 @@ h5.card-title {
   border-radius: .25rem;
   -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* SCORES TABLE SORT ICONS  */
+th.reactable-header-sortable:after {
+  content: '\2191\2193';
+  font-size: 14px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+th.reactable-header-sortable {
+  cursor: pointer;
 }
 
 /* SCORES TABLE PAGINATION */
@@ -250,54 +345,11 @@ td a.reactable-current-page {
   color: white;
 } 
 
-
-/* button color options  
-#6b566b medium purple greay
-#ada8ad light grey with purple tones
-*/
-
-
-.hall-of-fame h2 {
-  color: white;
-}
-.max-width-600 {
-  max-width: 600px;
-  margin: auto;
-}
 .reactable-pagination tr {
   text-align: center;
 }
-.navbar-nav {
-  width: 100%;
-}
-.navbar-nav .nav-link.nav-link-auth {
-  color: white;
-  float: right;
-}
-.navbar-nav .nav-link.nav-link-auth:hover {
-  color: white;
-  cursor: pointer;
-  border: 1px solid grey;
-  border-radius: 4px;
-}
-.nav-right {
-  margin-left: auto;
-}
-.user-profile img {
-  width: 40px;
-  border-radius: 50%;
-  margin-right:  10px;
-  margin-left: 10px;
-}
-.alert-success {
-  color: white;
-  background-color: #0EBF00;
-  border: none;
-  float: right;
-  display: none;
-  margin-left: 15px;
-  white-space: pre;
-}
+
+
 
 .score-stats span {
   font-size: 2rem;
@@ -314,7 +366,32 @@ td a.reactable-current-page {
   margin-bottom: 20px;
 }
 
+/***************************
+        UTILITIES  
+****************************/ 
+.max-width-600 {
+  max-width: 600px;
+  margin: auto;
+}
 
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.alert-success {
+  color: white;
+  background-color: #0EBF00;
+  border: none;
+  float: right;
+  display: none;
+  margin-left: 15px;
+  white-space: pre;
+}
+
+
+/***************************
+        MEDIA QUERIES  
+****************************/ 
 @media screen and (max-width: 576px) {
   .nav-right {
     margin-left: unset;
@@ -323,7 +400,6 @@ td a.reactable-current-page {
     color: white;
     float: none;
   }
-
 }
 
 /* smaller than ipad portrait */
@@ -346,16 +422,10 @@ td a.reactable-current-page {
   }
 }
 
-/* addd sort icons to reactable */
-th.reactable-header-sortable:after {
-  content: '\2191\2193';
-  font-size: 14px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-}
+
 
 .hero-text {
-  font-size: 55px;
+  font-size: 48px;
   font-weight: bold;
   color: #f0b64c;
   padding-bottom: 20px;

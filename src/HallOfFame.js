@@ -14,11 +14,15 @@ class HallOfFame extends React.Component {
   render() {
     return (
       <div className='hall-of-fame max-width-600'>
-        <h2 className='flex-space-between'>
+        <h2 className='flex-space-between hero-text'>
           <span>Top Scores</span>
           <i className="flaticon-best"></i>
         </h2>
-        <Table allScores={this.props.allScores} />
+        <Table 
+          allScores={this.props.allScores} 
+          columns={this.props.columns}
+          maxPaginationBtns={this.props.maxPaginationBtns}
+        />
       </div>
     )
   }
@@ -26,7 +30,9 @@ class HallOfFame extends React.Component {
 }
 
 HallOfFame.propTypes = {
-  allScores: PropTypes.array.isRequired
+  allScores: PropTypes.array.isRequired,
+  columns: PropTypes.array,
+  maxPaginationBtns: PropTypes.number
 }
 
 export default HallOfFame;

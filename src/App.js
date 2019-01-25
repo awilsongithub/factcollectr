@@ -292,6 +292,7 @@ class App extends Component {
                 categories={this.categories}
                 handleCategorySelection={this.handleCategorySelection}
                 resetShowValues={this.resetShowValues}
+                allScores={this.state.allScores}
               />}
             />
 

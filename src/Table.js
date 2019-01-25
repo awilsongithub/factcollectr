@@ -16,9 +16,27 @@ class ScoresTable extends React.Component {
 
   constructor(props){
     super();
+    this.maxPaginationBtns = props.maxPaginationBtns;
   }
 
-  columns = [{}]
+  // build column objects array for reactable using props.desirecColumnNames
+  // desiredColumnObjects = [];
+  // allColumnObjects = desiredColumns;
+
+  allColumns = [
+    { key: 'percentString', label: 'Score' },
+    { key: 'userName', label: 'Player' },
+    { key: 'category', label: 'Category' },
+    { key: 'date', label: 'Date' }
+  ]
+
+  // desiredColumnNames.forEach(name => {
+  //   let match = null;
+  //   match = allColumnObjects.find(obj => obj.label === name)
+  //   if(match){
+  //     desiredColumnObjects.push(match)
+  //   }
+  // });
 
   componentDidMount() {
     const el = document.getElementsByClassName('reactable-filter-input')[0];
@@ -29,21 +47,16 @@ class ScoresTable extends React.Component {
     return (
       <div className='table-hall-of-fame'>
         <Table
-          className='table'
+          className='table table-hover'
           filterable={['category', 'userName']}
           noDataText="No matching records found"
           itemsPerPage={10}
-          pageButtonLimit={10}
+          pageButtonLimit={this.maxPaginationBtns || 4 }
           currentPage={0}
           sortable={true}
           defaultSort={{column: 'percentString', direction: 'desc'}}
           data={this.props.allScores}
-          columns={[
-            {key: 'percentString', label: 'Score'},
-            {key: 'userName', label: 'Player'},
-            {key: 'category', label: 'Category'},
-            {key: 'date', label: 'Date'}
-          ]}
+          columns={this.props.columns || this.allColumns}
         >
         </Table>
       </div>
@@ -63,7 +76,9 @@ class ScoresTable extends React.Component {
 }
 
 ScoresTable.propTypes = {
-  allScores: PropTypes.array.isRequired
+  allScores: PropTypes.array.isRequired,
+  columns: PropTypes.array,
+  maxPaginationBtns: PropTypes.number
 }
 
 export default ScoresTable;
