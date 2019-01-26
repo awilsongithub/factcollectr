@@ -9,7 +9,7 @@ body {
   /* background image */
   background: linear-gradient(rgba(90, 62, 76, 0.5), rgba(0, 0, 0, 0.7)), url(./assets/library_photo.png);
   background-size: cover;
-  height: 100vh;
+  height: 250vh;
 }
 .App.container {
   padding-top: 15px;
