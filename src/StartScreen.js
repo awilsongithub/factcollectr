@@ -40,8 +40,6 @@ class StartScreen extends React.Component {
                     >
                       <div className="card-body">
                         <i className={`flaticon-${cat.icon}`}></i>
-                        <i className='flaticon-dice rotate-center'></i>
-
                         <h5 className="card-title">{cat.name}</h5>
                       </div>
                     </div>
