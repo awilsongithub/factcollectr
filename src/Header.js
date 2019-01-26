@@ -10,7 +10,13 @@ import { NavLink } from 'react-router-dom';
  * AND SOME CONDITIONAL RENDERING OF LOGIN/LOGOUT LINKS
  */
 const Header = props => {
-
+  
+  const getFirstName = fullName => {
+    let end = fullName.indexOf(' ');
+    let firstName = fullName.substring(0, end);
+    return firstName;
+  }
+  
   return (
     <nav className="navbar fixed-top navbar-expand-sm navbar-dark">
       <div className='container'>
@@ -33,7 +39,7 @@ const Header = props => {
             </span>
 
             <span data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
-              <NavLink className="nav-item nav-link" to="/hall">Top Score Details</NavLink>
+              <NavLink className="nav-item nav-link" to="/hall">All Scores</NavLink>
             </span>
 
             <span className='nav-right' data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
@@ -41,7 +47,7 @@ const Header = props => {
                 <div>
                   <span className='user-profile d-none d-sm-inline'>
                     <img src={props.user.photoURL} alt='' />
-                    <span className='text-white d-sm-none d-md-inline'>{props.user.displayName}</span>
+                    <span className='text-white d-sm-none d-md-inline'>{getFirstName(props.user.displayName)}</span>
                   </span>
                   <a href='' onClick={props.logout} className='nav-link-auth nav-item nav-link'>Log Out</a>
                 </div>

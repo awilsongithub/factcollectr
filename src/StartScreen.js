@@ -23,10 +23,11 @@ class StartScreen extends React.Component {
     return (
       <div>
         <div className='row'>
-          <div className='col-xs-12 col-sm-6'>
+          <div className='col-xs-12 col-sm-8 question-list'>
 
-            <h2 className='hero-text'>Quiz yourself</h2>
-            {/* <h2 className='text-white'>Choose Category to Start Quiz</h2> */}
+            <div className='hero-text'>
+              <h2 className='flash-text'>Quiz yourself</h2>
+            </div>
             <div className="card-deck">
 
               {this.props.categories.map((cat, i) =>
@@ -39,6 +40,8 @@ class StartScreen extends React.Component {
                     >
                       <div className="card-body">
                         <i className={`flaticon-${cat.icon}`}></i>
+                        <i className='flaticon-dice rotate-center'></i>
+
                         <h5 className="card-title">{cat.name}</h5>
                       </div>
                     </div>
@@ -50,7 +53,7 @@ class StartScreen extends React.Component {
 
 
           </div>
-          <div className='col-xs-12 col-sm-6'>
+          <div className='col-xs-12 col-sm-4'>
             <HallOfFame
               allScores={this.props.allScores}
               columns={[

@@ -205,6 +205,7 @@ class App extends Component {
       userGuessBtn.addClass('btn-wrong');
         $(correctAnswerBtn).addClass('btn-correct-animate');
     }
+    $('.flaticon-dice').addClass('rotate-center');
   }
 
   // called when user has answered the final question

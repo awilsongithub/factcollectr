@@ -38,7 +38,7 @@ class QuizScreen extends React.Component {
             <div className='text-left'>
               
               {/* on mobile show category icon instead of name */}
-              <span className='hidden-md-up'>
+              <span className='hidden-md-up category-icon-container'>
                 <i className={`flaticon-${this.props.icon}`}></i>
               </span>
 
