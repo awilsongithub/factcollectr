@@ -6,12 +6,11 @@ import Carousel from './Carousel';
 import Score from './Score';
 
 /**
- * QUIZSCREEN IS BASICALLY A CONTAINER THAT RENDERS EITHER
- * SCORE OR A COLLECTION OF COMPONENTS MAKING UP THE QUIZ MODE UI
- * CONDITIONALLY BASED ON SHOWSCORE: TRUE/FALSE
- *  TODO refactor play mode jsx into a component so
- *  we have 2 components here: score and play
+ * QUIZSCREEN RENDERS EITHER SCORE OR QUIZ
+ * TODO refactor play mode jsx into a component so
+ * we have 2 components here: score and play
  */
+
 class QuizScreen extends React.Component {
 
   constructor(props){
@@ -19,6 +18,13 @@ class QuizScreen extends React.Component {
     this.state = {
     }
   }
+
+  componentDidMount(){
+    var page = document.body;
+    console.log(page)
+    page.scrollTop = 0;
+  }
+  
  
   render() {
     if(this.props.showScore === true) {
@@ -36,12 +42,11 @@ class QuizScreen extends React.Component {
           <div className='stats'>
 
             <div className='text-left'>
-              
-              {/* on mobile show category icon instead of name */}
+              {/* show icon on sm-down */}
               <span className='hidden-md-up category-icon-container'>
                 <i className={`flaticon-${this.props.icon}`}></i>
               </span>
-
+              {/* show name on md-up */}
               <span className='hidden-sm-down'>
                 {this.props.currentCategory}
               </span>
@@ -66,9 +71,7 @@ class QuizScreen extends React.Component {
         </div>
       )
     }
-
   }
-
 }
 
 QuizScreen.propTypes = {

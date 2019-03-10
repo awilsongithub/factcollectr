@@ -16,7 +16,8 @@ const Score = props => {
   quizScore.decimal = props.currentQuiz.correct/props.questions.length;
   quizScore.percentString = quizScore.decimal * 100 + '%';
   quizScore.category = props.currentQuiz.category;
-  // TODO save as number of seconds? or usable format? use moment?
+  /* TODO save as number of seconds? */
+  /* or usable format? use moment? */
   quizScore.time = props.currentQuiz.time;
   quizScore.date = new Date().toLocaleDateString('en-US');
 
@@ -47,16 +48,14 @@ const Score = props => {
     quizScore.userPhotoURL = props.user.photoURL;
   }
 
-  console.log('quizScore', quizScore);
-
   const authToSaveAlert = ()  => {
     alert('Please Log In to save your score.');
   }
 
   return (
   
-    <div class="jumbotron scorecard">
-      <div class="container">
+    <div className="jumbotron scorecard">
+      <div className="container">
 
         <h1 className='flex-space-between'>
           <span>{message.title}</span>
@@ -77,7 +76,7 @@ const Score = props => {
         
         <p>
           {!props.user ?
-            <a className="btn btn-primary btn-lg bg-purple" onClick={authToSaveAlert}>Save score</a>
+            <span className="btn btn-primary btn-lg bg-purple" onClick={authToSaveAlert}>Save score</span>
             :
             <NavLink to='/hall' className="btn btn-primary btn-lg bg-purple" onClick={(e) => props.saveScore(quizScore, e)} >Save score</NavLink>
           }

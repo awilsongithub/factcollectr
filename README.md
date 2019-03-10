@@ -1,12 +1,8 @@
-# Run the app 
-- Install [node](https://nodejs.org/en/) if you don't have it
-- git clone https://github.com/awilsongithub/factcollectr.git
-- cd factcollectr
-- npm install
-- npm start
-- open http://localhost:3000
+# [PLAY THE GAME](https://factcollectr-8c6bd.firebaseapp.com/)
 
 # About 
+I built this game to learn React. 
+
 - Trivia questions courtesy of [Open Trivia Database](https://opentdb.com)
 - Bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 - Routing with [React Router v4](https://reacttraining.com/react-router/)

@@ -24,6 +24,7 @@ const Carousel = props => {
       <ol className="carousel-indicators">
         {props.questions.map( (question, index) =>
             <li
+              key={index}
               data-target="#carouselExampleIndicators"
               data-slide-to={index}
               className={index === 0 ? 'active' : ''}>

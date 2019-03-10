@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Reactable from 'reactable';
 
 var Table = Reactable.Table;
-var Thead = Reactable.Thead;
-var Th = Reactable.Th;
 
 /**
  * SCORESTABLE USES Reactable: https://github.com/glittershark/reactable

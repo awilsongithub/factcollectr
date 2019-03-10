@@ -102,7 +102,6 @@ class App extends Component {
     const scoresRef = firebase.database().ref('scores');
     scoresRef.once('value', (snapshot) => {
       let t = snapshot.val();
-      console.log('got scores from db', t);
       let newAllScores = [];
       for (let s in t) {
         newAllScores.push({
@@ -113,8 +112,7 @@ class App extends Component {
           percentString:  t[s].percentString,
           time:           t[s].time,
           userName:       t[s].userName,
-          userEmail:      t[s].userEmail,
-          userName:       t[s].userName,
+          userEmail:      t[s].userEmail
         })
       }
       this.setState({

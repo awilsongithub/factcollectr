@@ -3,13 +3,8 @@
 ********************/
 
 body {
-  /* because of fixed navbar */
-  padding-top: 70px;
+  padding-top: 70px; /* because of fixed navbar */
   font-family: 'Montserrat', sans-serif;
-  /* background image */
-  background: linear-gradient(rgba(90, 62, 76, 0.5), rgba(0, 0, 0, 0.7)), url(./assets/library_photo.png);
-  background-size: cover;
-  height: 250vh;
 }
 .App.container {
   padding-top: 15px;
@@ -24,35 +19,20 @@ button {
   padding-top: 20px;
 }
 .hero-text {
-  font-size: 42px;
-  font-weight: bold;
-  color: #f0b64c;
-  padding-bottom: 20px;
-  /* padding-top: 105px; */
-  text-align: center;
+  /* color: #f0b64c; */
+  padding-bottom: 16px;
+  padding-top: 16px;
 }
 .hall-of-fame .hero-text {
   border-radius: 3px 3px 0 0;
   padding: 15px;
   color: #444;
   margin-bottom: 0;
-  font-size: 25px;
-  /* margin-top: 85px; */
-  background-color: rgba(248,249,250,.9);
-}
-.question-list .hero-text {
-  background-image: url(./assets/marquee3.png);
-  background-size: contain;
-  background-position: center; 
-  background-repeat: no-repeat;
-  margin-bottom: 15px;
-  min-height: 170px;
+  font-size: 32px;
+  /* background-color: rgba(248,249,250,.9); */
 }
 .flash-text {
-  padding-top: 10%;
-  font-size:55px;
-  animation: text-flash linear 1s infinite;
-  -webkit-animation: text-flash linear 1s infinite;
+  font-size:32px;
 }
 @keyframes text-flash {
   0% { opacity: 1;  } 
@@ -83,8 +63,6 @@ button {
 .navbar-nav .nav-link.nav-link-auth:hover {
   color: white;
   cursor: pointer;
-  border: 1px solid grey;
-  border-radius: 4px;
 }
 .nav-right {
   margin-left: auto;
@@ -127,44 +105,52 @@ h1, h2, h3, h4, h5, h6 {
  QUIZ SCREEN / PLAY MODE 
 *****************************/
 
-.card .btn {
+.card-container {
+  display: inline-block;
+  width:50%;
+}
+.card {
+  margin-bottom: 10px;
+  box-shadow: 1px 2px 2px #666;
+  border-radius: 4px;
+}
+.carousel-item .card {
+  min-height: 450px;
+}
+.card.btn {
   width: 100%;
   margin-bottom: 10px;
   white-space: normal; /* enables word wrapping */
   line-height: 1.4;
+  min-height: unset;
+  height: 50px;
+  cursor: pointer;
 }
 .card .btn:nth-child(4) {
   margin-bottom: 50px;
-}
-.card {
-  min-height: 450px;
-  margin-bottom: 10px;
-  box-shadow: 1px 2px 2px #666;
-  border-radius: 4px;
 }
 .card-deck .col {
   padding-right: 5px;
   padding-left: 5px;
 }
-.card-deck div {
-    width: 99%;
-}
 .card-deck .card-body {
-  padding: .5rem 1.25rem;
+  padding: .3rem 1.25rem;
 }
 .card-deck .card {
   margin-right: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   margin-left: 5px;
 }
-.card-btn {
-  min-height: 50px;
-  cursor: pointer;
-}
+
 
 /*******************
  ANSWER BUTTONS AND THEIR ANIMATIONS 
 ********************/
+
+.btn-outline-secondary {
+  width: 100%;
+  margin-bottom: 5px;
+}
 .btn-outline-secondary:hover {
   color: inherit;
 }
@@ -235,8 +221,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  color: white;
   font-size: 32px;
+  padding-right: 25px;
+  padding-right: 25px;
 }
 
 
@@ -318,14 +305,13 @@ h5.card-title {
 
 .hall-of-fame {
   margin-top: 5px;
+  border: 1px solid #9e9e9e75;
+  border-radius: 4px;
 }
 .table-hall-of-fame .table {
   color: black;
   border-radius: 0 0 3px 3px;
-  background-color: rgba(248, 249, 250, .9);
-}
-.table-hall-of-fame thead td {
-  border-top: none;
+  /* background-color: rgba(248, 249, 250, .9); */
 }
 .table-hall-of-fame thead th,
 .table-hall-of-fame thead td,
@@ -337,6 +323,7 @@ h5.card-title {
       padding: 5px 5px 5px 15px;
 }
 .table-hall-of-fame thead td {
+    border-top: none;
     padding: .7rem 1rem;
 }
 .table-hall-of-fame tbody tr {
@@ -350,7 +337,7 @@ h5.card-title {
 /* ADD BOOTSTRAP .FORM-CONTROL STYLES TO THIS INPUT */
 .reactable-filter-input {
   width: 100%;
-  height: calc(2.25rem + 2px);
+  height: 52px;
   padding: .375rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -462,8 +449,7 @@ td a.reactable-current-page {
     float: none;
   }
   .question-list .flash-text {
-    font-size: 44px;
-    /* padding-top: 19%; */
+    font-size: 32px;
   }
   .question-list .hero-text {
     min-height: 140px;

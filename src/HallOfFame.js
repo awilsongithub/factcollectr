@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import firebase from './firebase';
-import $ from 'jquery';
 import Table from './Table';
 
 class HallOfFame extends React.Component {
@@ -16,7 +14,6 @@ class HallOfFame extends React.Component {
       <div className='hall-of-fame max-width-600'>
         <h2 className='flex-space-between hero-text'>
           <span>Top Scores</span>
-          <i className="flaticon-best"></i>
         </h2>
         <Table 
           allScores={this.props.allScores} 

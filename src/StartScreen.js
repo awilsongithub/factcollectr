@@ -31,7 +31,7 @@ class StartScreen extends React.Component {
             <div className="card-deck">
 
               {this.props.categories.map((cat, i) =>
-                <div className=''>
+                <div className='card-container' key={i}>
                   <Link to='/play'>
                     <div
                       key={i}

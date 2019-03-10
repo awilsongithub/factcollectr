@@ -21,7 +21,7 @@
    },
    {
       "id": 13,
-      "name": "Musicals & Theatre",
+      "name": "Theatre",
       "icon": "stage"
    },
    {
@@ -41,7 +41,7 @@
    },
    {
       "id": 17,
-      "name": "Science & Nature",
+      "name": "Science",
       "icon": "science"
    },
    {
@@ -111,7 +111,7 @@
    },
    {
       "id": 31,
-      "name": "Anime & Manga",
+      "name": "Anime",
       "icon": "cartoons"
    },
    {
