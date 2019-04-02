@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import $ from 'jquery';
 
 /**
- * SCORE IS A CARD DISPLAYING THE SCORE AT END OF A QUIZ
- * IT CALCULATES SOME HUMAN FRIENDLY DATA
- * AND FLATTENS THE USER OBJECT INTO 
- * A FEW SPECIFIC PROPS ON QUIZSCORE Object
- * THIS IS BECAUSE THE REACTABLE MODULE USED TO DISPLAY SORTABLE, FILTERABLE Data
- * SEEMS UNABLE TO USE DEEPLY NESTED DATA STRUCTURES?? (SEE TABLE COMPONENT)
+ * CALCULATE & DISPLAY GAME STATS
  */
 const Score = props => {
 
@@ -16,12 +12,9 @@ const Score = props => {
   quizScore.decimal = props.currentQuiz.correct/props.questions.length;
   quizScore.percentString = quizScore.decimal * 100 + '%';
   quizScore.category = props.currentQuiz.category;
-  /* TODO save as number of seconds? */
-  /* or usable format? use moment? */
   quizScore.time = props.currentQuiz.time;
   quizScore.date = new Date().toLocaleDateString('en-US');
 
-  // set message
   var message = {};
   var c = props.currentQuiz.correct;
   if (c === 10) { 
@@ -52,9 +45,18 @@ const Score = props => {
     alert('Please Log In to save your score.');
   }
 
+  const componentClasses = ['jumbotron', 'scorecard', 'show'];
+
+  setTimeout(() => {
+    var sc = document.querySelector('.scorecard');
+    console.log(sc);
+    sc.classList.add('show');
+    console.log('slow')
+  }, 100)
+  
   return (
   
-    <div className="jumbotron scorecard">
+    <div className="jumbotron scorecard card">
       <div className="container">
 
         <h1 className='flex-space-between'>
@@ -64,14 +66,16 @@ const Score = props => {
         <p>{message.subtitle}</p>
 
         <table className='table'>
+          <tbody>
             <tr>
               <td>Score:</td>
               <td>{quizScore.percentString}</td>
             </tr>
-          <tr>
-            <td>Time:</td>
-            <td>9:99</td>
-          </tr>
+            <tr>
+              <td>Time:</td>
+              <td>9:99</td>
+            </tr>
+          </tbody>
         </table>
         
         <p>
@@ -85,7 +89,6 @@ const Score = props => {
 
       </div>
     </div>
-
 
   )
 }

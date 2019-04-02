@@ -18,13 +18,6 @@ class QuizScreen extends React.Component {
     this.state = {
     }
   }
-
-  componentDidMount(){
-    var page = document.body;
-    console.log(page)
-    page.scrollTop = 0;
-  }
-  
  
   render() {
     if(this.props.showScore === true) {
