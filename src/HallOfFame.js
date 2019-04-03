@@ -14,7 +14,7 @@ class HallOfFame extends React.Component {
     return (
       <div className='hall-of-fame max-width-600'>
         <h2 className='flex-space-between hero-text'>
-          <span>Top Scores</span>
+          <span>Scores</span>
         </h2>
         <Table 
           allScores={this.props.allScores} 

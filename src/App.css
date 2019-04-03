@@ -2,6 +2,9 @@
       GENERAL 
 ********************/
 
+/* font-family: 'Bungee Shade', cursive;
+font-family: 'Rubik', sans-serif; */
+
 body {
   padding-top: 70px; /* because of fixed navbar */
   font-family: 'Montserrat', sans-serif;
@@ -11,13 +14,24 @@ body {
   padding-top: 15px;
 }
 .container {
-  max-width: 720px;
+  max-width: 835px;
 }
 button {
   margin-right: 5px;
 }
 .main-content {
   padding-top: 20px;
+}
+
+/*******************
+      HEADINGS
+********************/
+
+.navbar-brand, 
+.flash-text,
+.hero-text {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 32px;
 }
 .hero-text {
   /* color: #f0b64c; */
@@ -118,6 +132,9 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 1px 2px 2px #666;
   border-radius: 4px;
 }
+.carousel-item .card-text {
+  margin-bottom: 25px;
+}
 .carousel-item .card {
   min-height: 450px;
 }
@@ -127,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: normal; /* enables word wrapping */
   line-height: 1.4;
   min-height: unset;
-  height: 50px;
+  /* height: 50px; */
   cursor: pointer;
 }
 .card .btn:nth-child(4) {
@@ -139,6 +156,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-deck .card-body {
   padding: .3rem 1.25rem;
+}
+.carousel-item .card-body {
+  padding: 25px;
 }
 .card-deck .card {
   margin-right: 5px;
@@ -154,6 +174,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline-secondary {
   width: 100%;
   margin-bottom: 5px;
+  /* height: 50px; */
 }
 .btn-outline-secondary:hover {
   color: inherit;
@@ -198,8 +219,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid red;
   height: 30px;
 }
-
-
+.carousel-indicators {
+  margin-bottom: 25px;
+}
 .carousel-indicators li {
   cursor: initial;
   background-color: lightgrey;
@@ -228,10 +250,10 @@ h1, h2, h3, h4, h5, h6 {
 .stats {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  font-size: 32px;
-  padding-right: 25px;
-  padding-right: 25px;
+  padding: 15px;
+  font-size: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
@@ -269,11 +291,10 @@ h5.card-title {
 .card-deck .card:hover,
 .card-body .btn-outline-secondary:hover {
   background-color: #f4f2f4;
-  -webkit-transform: scale(1.02);
-  -ms-transform: scale(1.02);
-  transform: scale(1.02);
-  box-shadow: 0 3px 4px 0 #999;
-
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+  box-shadow: 0 8px 8px 0 #D3D3D3;
 }
 .card-deck .col-md-6,
 .card-deck .col-lg-4,
@@ -462,6 +483,27 @@ td a.reactable-current-page {
 /***************************
         MEDIA QUERIES  
 ****************************/ 
+
+/* ipad portrait and up */
+@media screen and (min-width: 768px) {
+  .hidden-md-up {
+    display: none;
+  }
+}
+
+/* smaller than ipad portrait */
+@media screen and (max-width: 767px) {
+  .hidden-sm-down {
+    display: none;
+  }
+  /* hide 4th column */
+  .reactable-th-date,
+  .reactable-data td:nth-child(4) {
+    display: none;
+  }
+}
+
+/* phones */ 
 @media screen and (max-width: 576px) {
   .nav-right {
     margin-left: unset;
@@ -483,27 +525,24 @@ td a.reactable-current-page {
     margin-right: 5%;
     margin-left: 5%;
   }
-
-}
-
-/* smaller than ipad portrait */
-@media screen and (max-width: 767px) {
-  .hidden-sm-down {
-    display: none;
+  .navbar-brand {
+    font-size: 22px;
   }
-  /* hide 4th column */
-  .reactable-th-date,
-  .reactable-data td:nth-child(4) {
-    display: none;
-  }
-
-}
-
-/* ipad portrait and up */
-@media screen and (min-width: 768px) {
-  .hidden-md-up {
-    display: none;
+  .card-container {
+    width: 100%;
   }
 }
+
+/* small phones like iphone 5 */
+@media screen and (max-width: 350px) {
+   .navbar-brand {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
 
 
