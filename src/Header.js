@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-
 /**
  * THIS COMPONENT IS BASICALLY A RESPONSIVE BOOTSTRAP NAVBAR
  * WITH REACT ROUTER NAVLINKS
@@ -18,7 +17,7 @@ const Header = props => {
   }
   
   return (
-    <nav className="navbar fixed-top navbar-expand-sm navbar-dark">
+    <nav className="navbar fixed-top navbar-expand-lg navbar-dark">
       <div className='container'>
 
         {/* LOGO HOME LINK */}
