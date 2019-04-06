@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
+
 /**
  * THIS COMPONENT IS BASICALLY A RESPONSIVE BOOTSTRAP NAVBAR
  * WITH REACT ROUTER NAVLINKS
