@@ -71,9 +71,7 @@ button {
   min-height: 75px;
   box-shadow: 1px 2px 3px #999;
 }
-.navbar-nav {
-  width: 100%;
-}
+
 .navbar-nav .nav-link.nav-link-auth {
   color: white;
   float: right;
