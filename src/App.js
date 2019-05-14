@@ -279,10 +279,11 @@ class App extends Component {
           />
 
           {/* ALERTS */}
-          <span className='login-success-alert alert alert-success' role='alert'>Login successful</span>
-          <div className='max-width-600'>
+		  <div class="container position-relative">
+ 			<span className='login-success-alert alert alert-success' role='alert'>Login successful</span>
             <span className='new-score-alert alert alert-success' role='alert'>New score saved</span>
-          </div>
+		  </div>
+         
   
           <Switch>
 

@@ -13,3 +13,8 @@ I built this game to learn React.
 - Sortable, searchable tables with [Reactable](https://github.com/glittershark/reactable)
 - Icons from [Flaticon](https://www.flaticon.com/)
 
+# How to
+ - build: npm run build
+ - deploy: firebase deploy
+ - live site: https://factcollectr-8c6bd.firebaseapp.com/
+ 
